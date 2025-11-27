@@ -1,6 +1,7 @@
 <div>
     <form method="POST" action="{{ route('password.update') }}">
         @csrf
+        @method('PUT') <!-- Add this line -->
 
         <!-- Old Password -->
         <div>
@@ -19,7 +20,7 @@
         <!-- Confirm New Password -->
         <div class="mt-4">
             <x-input-label for="new_password_confirmation" :value="__('Confirm New Password')" />
-            <x-text-input id="new_password_confirmation" class="block mt-1 w-full" type="password" name="new_password_confirmation" required autocomplete="new-password_confirmation" />
+            <x-text-input id="new_password_confirmation" class="block mt-1 w-full" type="password" name="new_password_confirmation" required autocomplete="new-password" />
             <x-input-error :messages="$errors->get('new_password_confirmation')" class="mt-2" />
         </div>
 

@@ -20,7 +20,6 @@ class SuperAdminSeeder extends Seeder
             'password' => Hash::make('password'),
             'user_role' => 'super_admin',
             'is_active' => true,
-            'force_pw_reset' => false,
         ]);
 
         $this->command->info('Super Admin created successfully!');

@@ -21,12 +21,6 @@ Route::post('/card/{slug}/add-contact', [PublicCardController::class, 'addContac
 // Authentication Routes (Laravel Breeze)
 require __DIR__ . '/auth.php';
 
-// Force Password Reset
-Route::middleware('auth')->group(function () {
-    Route::get('/password/force-reset', function () {
-        return view('livewire.force-password-reset-form');
-    })->name('password.force-reset');
-});
 
 // Standard User Routes
 Route::middleware(['auth', 'role:standard'])->group(function () {

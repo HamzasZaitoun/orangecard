@@ -14,27 +14,27 @@ class CreateUserForm extends Component
         'username' => 'required|string|max:255|unique:users,username',
     ];
 
-   public function submit()
-{
-    $this->validate();
+    public function submit()
+    {
+        $this->validate();
 
-    $defaultPassword = 'orangecode123';
-    $defaultEmail = $this->username . '@example.com';  // Default email
+        $defaultPassword = 'orangecode123';
+        $defaultEmail = $this->username . '@example.com';  // Default email
 
-    $user = User::create([
-        'username' => $this->username,
-        'name' => $this->username,
-        'email' => $defaultEmail,  // Set default email
-        'password' => Hash::make($defaultPassword),
-        'user_role' => 'standard',
-        'is_active' => true,
-        'force_pw_reset' => true,
-    ]);
+        $user = User::create([
+            'username' => $this->username,
+            'name' => $this->username,
+            'email' => $defaultEmail,  // Set default email
+            'password' => Hash::make($defaultPassword),
+            'user_role' => 'standard',
+            'is_active' => true,
 
-    session()->flash('message', "User created with username: {$user->username}");
+        ]);
 
-    return redirect()->route('admin.users');
-}
+        session()->flash('message', "User created with username: {$user->username}");
+
+        return redirect()->route('admin.users');
+    }
 
     public function render()
     {

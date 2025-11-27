@@ -17,7 +17,6 @@ class User extends Authenticatable
         'password',
         'user_role',
         'is_active',
-        'force_pw_reset',
     ];
 
     protected $hidden = [
@@ -31,7 +30,7 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
             'is_active' => 'boolean',
-            'force_pw_reset' => 'boolean',
+
         ];
     }
 

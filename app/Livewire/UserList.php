@@ -6,8 +6,6 @@ use Livewire\Component;
 use Livewire\WithPagination;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Mail;
-use Illuminate\Support\Str;
 
 class UserList extends Component
 {
@@ -16,8 +14,18 @@ class UserList extends Component
     public $search = '';
     public $confirmingDelete = false;
     public $userToDelete = null;
+    public $showPasswordModal = false;
+    public $userToResetPassword = null;
+    public $newPassword = '';
+    public $confirmPassword = '';
 
     protected $queryString = ['search'];
+
+    public function mount()
+    {
+        $this->showPasswordModal = false;
+        $this->confirmingDelete = false;
+    }
 
     public function updatingSearch()
     {
@@ -46,21 +54,51 @@ class UserList extends Component
         $this->userToDelete = null;
     }
 
-    public function resetPassword($userId)
+    public function openPasswordModal($userId)
     {
-        $user = User::find($userId);
+        // Only super admin can reset passwords
+        if (!auth()->user()->isSuperAdmin()) {
+            session()->flash('error', 'Only Super Admin can reset passwords.');
+            return;
+        }
 
-        if ($user && $user->isStandard()) {
-            $tempPassword = Str::random(12);
-            $user->password = Hash::make($tempPassword);
-            $user->force_pw_reset = true;
+        $this->userToResetPassword = $userId;
+        $this->showPasswordModal = true;
+        $this->newPassword = '';
+        $this->confirmPassword = '';
+    }
+
+    public function closePasswordModal()
+    {
+        $this->showPasswordModal = false;
+        $this->userToResetPassword = null;
+        $this->newPassword = '';
+        $this->confirmPassword = '';
+        $this->resetValidation();
+    }
+
+    public function resetPassword()
+    {
+        $this->validate([
+            'newPassword' => 'required|min:8',
+            'confirmPassword' => 'required|same:newPassword',
+        ], [
+            'newPassword.required' => 'New password is required',
+            'newPassword.min' => 'Password must be at least 8 characters',
+            'confirmPassword.required' => 'Please confirm the password',
+            'confirmPassword.same' => 'Passwords do not match',
+        ]);
+
+        $user = User::find($this->userToResetPassword);
+
+        if ($user) {
+            $user->password = Hash::make($this->newPassword);
             $user->save();
 
-            // Send email with new password
-            // Mail::to($user->email)->send(new PasswordResetMail($tempPassword));
-
-            session()->flash('message', "Password reset for {$user->name}. Temp password: {$tempPassword}");
+            session()->flash('message', "Password updated successfully for {$user->name}");
         }
+
+        $this->closePasswordModal();
     }
 
     public function render()

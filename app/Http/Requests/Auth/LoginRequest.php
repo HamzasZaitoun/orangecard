@@ -26,10 +26,10 @@ class LoginRequest extends FormRequest
      */
     public function rules(): array
     {
-           return [
-        'username' => ['required', 'string'],
-        'password' => ['required', 'string'],
-    ];
+        return [
+            'username' => ['required', 'string'],
+            'password' => ['required', 'string'],
+        ];
     }
 
     /**
@@ -38,23 +38,23 @@ class LoginRequest extends FormRequest
      * @throws \Illuminate\Validation\ValidationException
      */
     public function authenticate(): void
-{
-    $this->ensureIsNotRateLimited();
+    {
+        // $this->ensureIsNotRateLimited();
 
-    // Attempt authentication with username and password
-    if (!Auth::attempt(
-        ['username' => $this->input('username'), 'password' => $this->input('password')],
-        $this->boolean('remember')
-    )) {
-        RateLimiter::hit($this->throttleKey());
+        // Attempt authentication with username and password
+        if (!Auth::attempt(
+            ['username' => $this->input('username'), 'password' => $this->input('password')],
+            $this->boolean('remember')
+        )) {
+            // RateLimiter::hit($this->throttleKey());
 
-        throw ValidationException::withMessages([
-            'username' => trans('auth.failed'),
-        ]);
+            throw ValidationException::withMessages([
+                'username' => trans('auth.failed'),
+            ]);
+        }
+
+        RateLimiter::clear($this->throttleKey());
     }
-
-    RateLimiter::clear($this->throttleKey());
-}
 
 
     /**
@@ -73,7 +73,7 @@ class LoginRequest extends FormRequest
         $seconds = RateLimiter::availableIn($this->throttleKey());
 
         throw ValidationException::withMessages([
-            'email' => trans('auth.throttle', [
+            'username' => trans('auth.throttle', [
                 'seconds' => $seconds,
                 'minutes' => ceil($seconds / 60),
             ]),
@@ -85,6 +85,6 @@ class LoginRequest extends FormRequest
      */
     public function throttleKey(): string
     {
-        return Str::lower($this->input('username')).'|'.$this->ip();
+        return Str::lower($this->input('username')) . '|' . $this->ip();
     }
 }

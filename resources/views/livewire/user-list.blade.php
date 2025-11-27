@@ -46,10 +46,12 @@
                     </td>
                     <td class="px-6 py-4">
                         <div class="flex justify-center space-x-2">
-                            <button wire:click="resetPassword({{ $user->id }})"
+                            @if(auth()->user()->isSuperAdmin())
+                            <button wire:click="openPasswordModal({{ $user->id }})"
                                 class="bg-blue-500 text-white px-3 py-1 rounded text-sm hover:bg-blue-600 transition">
                                 Reset Password
                             </button>
+                            @endif
                             <button wire:click="confirmDelete({{ $user->id }})"
                                 class="bg-red-500 text-white px-3 py-1 rounded text-sm hover:bg-red-600 transition">
                                 Deactivate
@@ -72,6 +74,48 @@
     <div class="mt-6">
         {{ $users->links() }}
     </div>
+
+    <!-- Password Reset Modal -->
+    @if($showPasswordModal)
+    <div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+        <div class="bg-white rounded-lg p-6 max-w-md w-full mx-4">
+            <h3 class="text-xl font-bold text-brand-black mb-4">Reset Password</h3>
+
+            <div class="space-y-4">
+                <div>
+                    <label class="block text-sm font-semibold text-brand-black mb-2">New Password</label>
+                    <input type="password"
+                        wire:model="newPassword"
+                        class="w-full px-4 py-2 border border-brand-gray rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-orange">
+                    @error('newPassword')
+                    <span class="text-red-500 text-sm">{{ $message }}</span>
+                    @enderror
+                </div>
+
+                <div>
+                    <label class="block text-sm font-semibold text-brand-black mb-2">Confirm Password</label>
+                    <input type="password"
+                        wire:model="confirmPassword"
+                        class="w-full px-4 py-2 border border-brand-gray rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-orange">
+                    @error('confirmPassword')
+                    <span class="text-red-500 text-sm">{{ $message }}</span>
+                    @enderror
+                </div>
+            </div>
+
+            <div class="flex space-x-4 mt-6">
+                <button wire:click="resetPassword"
+                    class="flex-1 bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition">
+                    Update Password
+                </button>
+                <button wire:click="closePasswordModal"
+                    class="flex-1 bg-brand-gray text-white py-2 rounded-lg hover:bg-opacity-90 transition">
+                    Cancel
+                </button>
+            </div>
+        </div>
+    </div>
+    @endif
 
     <!-- Delete Confirmation Modal -->
     @if($confirmingDelete)
