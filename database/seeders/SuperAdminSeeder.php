@@ -17,13 +17,13 @@ class SuperAdminSeeder extends Seeder
             'name' => 'Super Admin',
             'username' => 'superadmin',
             'email' => 'admin@orangecard.com',
-            'password' => Hash::make('password'),
+            'password' => Hash::make('123456'),
             'user_role' => 'super_admin',
             'is_active' => true,
         ]);
 
         $this->command->info('Super Admin created successfully!');
         $this->command->info('Email: admin@orangecard.com');
-        $this->command->info('Password: password');
+        $this->command->info('Password: 123456');
     }
 }
