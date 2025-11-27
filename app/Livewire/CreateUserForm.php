@@ -18,7 +18,7 @@ class CreateUserForm extends Component
     {
         $this->validate();
 
-        $defaultPassword = 'orangecode123';
+        $defaultPassword = 'orange123';
         $defaultEmail = $this->username . '@example.com';  // Default email
 
         $user = User::create([

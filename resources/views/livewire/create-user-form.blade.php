@@ -3,7 +3,7 @@
         <div class="relative z-10">
             <h2 class="text-3xl font-bold mb-2">Create New User</h2>
             <p class="text-white/90">
-                Admin will only set the username. Default password is <strong>orangecard123</strong>.
+                Admin will only set the username. Default password is <strong>orange123</strong>.
             </p>
         </div>
         <div class="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -mr-32 -mt-32"></div>
@@ -49,7 +49,7 @@
                 </div>
 
                 <div class="bg-blue-50 border-l-4 border-blue-400 p-4 rounded-r-lg text-sm text-blue-700">
-                    New user default password: <strong>orangecard123</strong>.
+                    New user default password: <strong>orange123</strong>.
                 </div>
             </div>
 
