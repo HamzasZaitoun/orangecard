@@ -35,7 +35,7 @@
                         </svg>
                         <span id="copyBtnText">Copy</span>
                     </button>
-                    <a href="{{ url('/c') }}/{{ Str::slug($first_name . '-' . $last_name) }}"
+                    <a href="{{ url('/card') }}/{{ Str::slug($first_name . '-' . $last_name) }}"
                         target="_blank"
                         class="bg-brand-orange text-white px-4 py-2 rounded-lg font-semibold hover:bg-opacity-90 transition flex items-center space-x-2">
                         <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
