@@ -3,7 +3,7 @@
         <div class="relative z-10">
             <h2 class="text-3xl font-bold mb-2">Create New User</h2>
             <p class="text-white/90">
-                Admin will only set the username. Default password is <strong>orange123</strong>.
+                User account will be created automatically with generated credentials.
             </p>
         </div>
         <div class="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -mr-32 -mt-32"></div>
@@ -11,7 +11,7 @@
     </div>
 
     <div class="bg-white rounded-2xl shadow-xl p-8 border border-brand-light">
-        <form wire:submit="submit" class="space-y-6">
+        <form wire:submit.prevent="submit" class="space-y-6">
 
             <div class="space-y-6">
                 <div class="flex items-center space-x-3 pb-3 border-b-2 border-brand-orange">
@@ -23,34 +23,30 @@
                     <h3 class="text-xl font-bold text-brand-black">Account Information</h3>
                 </div>
 
+                <!-- Display generated username automatically -->
                 <div class="group">
-                    <label class="block text-sm font-semibold text-brand-black mb-2 group-focus-within:text-brand-orange transition">
-                        Username *
+                    <label class="block text-sm font-semibold text-brand-black mb-2">
+                        Generated Username
                     </label>
-                    <div class="relative">
-                        <input type="text"
-                            wire:model="username"
-                            placeholder="admin"
-                            value="admin"
-                            class="w-full px-4 py-3 pl-11 border-2 border-brand-light rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-orange focus:border-transparent transition bg-gray-50 focus:bg-white">
-                        <div class="absolute left-3 top-3.5 text-brand-gray">
-                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z" clip-rule="evenodd" />
-                            </svg>
-                        </div>
+                    <div class="px-4 py-3 bg-gray-50 border-2 border-brand-light rounded-xl text-gray-700">
+                        <strong>{{ $nextUsername ?? 'admin001' }}</strong>
                     </div>
-                    @error('username')
-                    <p class="text-red-500 text-sm mt-1 flex items-center">
-                        <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd" />
-                        </svg>
-                        {{ $message }}
-                    </p>
-                    @enderror
+                    <p class="text-sm text-gray-500 mt-1">Username is automatically generated</p>
+                </div>
+
+                <!-- Display generated name automatically -->
+                <div class="group">
+                    <label class="block text-sm font-semibold text-brand-black mb-2">
+                        Generated Display Name
+                    </label>
+                    <div class="px-4 py-3 bg-gray-50 border-2 border-brand-light rounded-xl text-gray-700">
+                        <strong>{{ $nextName ?? 'Admin User 001' }}</strong>
+                    </div>
+                    <p class="text-sm text-gray-500 mt-1">Display name is automatically generated</p>
                 </div>
 
                 <div class="bg-blue-50 border-l-4 border-blue-400 p-4 rounded-r-lg text-sm text-blue-700">
-                    New user default password: <strong>orange123</strong>.
+                    Default password: <strong>orange123</strong>. All credentials are generated automatically.
                 </div>
             </div>
 
