@@ -26,6 +26,13 @@
             --border: 0 0% 85%;
             --logo-orange: 30 100% 50%;
         }
+
+        .card-with-notch {
+            background-image: url('{{ asset("card-background.png") }}');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
     </style>
 </head>
 
@@ -42,10 +49,11 @@
         </div>
 
         <!-- Contact Card -->
-        <div class="bg-card rounded-3xl p-8 shadow-2xl relative">
+        <div class="card-with-notch rounded-3xl p-8 shadow-2xl relative">
 
             <!-- Profile Image -->
-            <div class="flex justify-center -mt-20 mb-6">
+            <div class="flex justify-center -mt-20 mb-6" style="margin-top: -7rem
+        ;">
                 <div class="w-32 h-32 rounded-full overflow-hidden border-8 border-background shadow-lg">
                     <img src="{{ asset($card->profile_img_url) }}"
                         alt="{{ $card->full_name }}"
@@ -79,11 +87,14 @@
                     Add Contact
                 </button>
             </a>
+        </div>
 
+        <!-- Edit Button - Bottom Left -->
+        <div class="mt-8">
             @auth
             @if(auth()->id() === $card->user_id)
             <a href="{{ route('dashboard.edit') }}"
-                class="h-14 w-14 rounded-xl hover:bg-secondary flex items-center justify-center transition-all">
+                class="inline-flex h-12 w-12 rounded-xl hover:bg-secondary/50 items-center justify-center transition-all">
                 <svg class="h-5 w-5 text-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z">
@@ -92,7 +103,7 @@
             </a>
             @else
             <a href="{{ route('card.edit.login.form', $card->public_slug) }}"
-                class="h-14 w-14 rounded-xl hover:bg-secondary flex items-center justify-center transition-all">
+                class="inline-flex h-12 w-12 rounded-xl hover:bg-secondary/50 items-center justify-center transition-all">
                 <svg class="h-5 w-5 text-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z">
@@ -102,7 +113,7 @@
             @endif
             @else
             <a href="{{ route('card.edit.login.form', $card->public_slug) }}"
-                class="h-14 w-14 rounded-xl hover:bg-secondary flex items-center justify-center transition-all">
+                class="inline-flex h-12 w-12 rounded-xl hover:bg-secondary/50 items-center justify-center transition-all">
                 <svg class="h-5 w-5 text-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z">
@@ -116,4 +127,4 @@
 
 </body>
 
-</html>
+</html
