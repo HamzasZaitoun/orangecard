@@ -21,6 +21,22 @@ class SuperAdminSeeder extends Seeder
             'user_role' => 'super_admin',
             'is_active' => true,
         ]);
+        User::create([
+            'name' => 'Super Admin',
+            'username' => 'admin',
+            'email' => 'admin@orangecard.com',
+            'password' => Hash::make('orange123'),
+            'user_role' => 'admin',
+            'is_active' => true,
+        ]);
+        User::create([
+            'name' => 'Super Admin',
+            'username' => 'admin001',
+            'email' => 'admin@orangecard.com',
+            'password' => Hash::make('orange123'),
+            'user_role' => 'admin',
+            'is_active' => true,
+        ]);
 
         $this->command->info('Super Admin created successfully!');
         $this->command->info('Email: admin@orangecard.com');
