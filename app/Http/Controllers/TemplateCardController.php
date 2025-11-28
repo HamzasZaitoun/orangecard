@@ -7,11 +7,10 @@ use Illuminate\Http\Request;
 
 class TemplateCardController extends Controller
 {
-    public function show($userId)
+    public function show($username, $userId)
     {
         $user = User::findOrFail($userId);
 
-        // Check if user is active
         if (!$user->is_active) {
             abort(404, 'This user is no longer available.');
         }
@@ -21,9 +20,9 @@ class TemplateCardController extends Controller
             return redirect()->route('card.public', $user->digitalCard->public_slug);
         }
 
-        // Show template card
         return view('public.template-card', compact('user'));
     }
+
 
     public function showLoginForm($userId)
     {

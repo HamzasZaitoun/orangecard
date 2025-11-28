@@ -33,6 +33,47 @@
             background-position: center;
             background-repeat: no-repeat;
         }
+
+        /* Fallback colors if Tailwind isn't loading */
+        .bg-background {
+            background-color: #000000 !important;
+        }
+
+        .text-foreground {
+            color: #ffffff !important;
+        }
+
+        .text-muted-foreground {
+            color: #b3b3b3 !important;
+        }
+
+        .text-card-foreground {
+            color: #1a1a1a !important;
+        }
+
+        .bg-primary {
+            background-color: #ff8000 !important;
+        }
+
+        .text-primary-foreground {
+            color: #ffffff !important;
+        }
+
+        .border-border {
+            border-color: #d9d9d9 !important;
+        }
+
+        .border-card {
+            border-color: #f7f7f7 !important;
+        }
+
+        .hover\:bg-primary\/90:hover {
+            background-color: #e67300 !important;
+        }
+
+        .hover\:bg-secondary\/50:hover {
+            background-color: rgba(51, 51, 51, 0.5) !important;
+        }
     </style>
 </head>
 
@@ -41,7 +82,7 @@
     <div class="w-full max-w-sm">
 
         <!-- Header -->
-        <div class="flex items-start justify-between mb-12">
+        <div class="flex items-start justify-between mb-8">
             <div class="flex items-center gap-2">
                 <img src="{{ asset('orange.png') }}" alt="Orange Logo" class="w-12 h-12 object-contain">
             </div>
@@ -49,12 +90,11 @@
         </div>
 
         <!-- Contact Card -->
-        <div class="card-with-notch rounded-3xl p-8 shadow-2xl relative" style="margin-top: 9rem">
+        <div class="card-with-notch rounded-3xl p-8 shadow-2xl relative">
 
             <!-- Profile Image -->
-            <div class="flex justify-center -mt-20 mb-6" style="margin-top: -9rem
-        ;">
-                <div class="w-40 h-40 rounded-full overflow-hidden border-8 border-background shadow-lg">
+            <div class="flex justify-center -mt-20 mb-6">
+                <div class="w-32 h-32 rounded-full overflow-hidden border-4 border-card shadow-lg">
                     <img src="{{ asset($card->profile_img_url) }}"
                         alt="{{ $card->full_name }}"
                         class="w-full h-full object-cover">
@@ -127,4 +167,4 @@
 
 </body>
 
-</html
+</html>

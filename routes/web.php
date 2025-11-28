@@ -14,7 +14,8 @@ Route::get('/', function () {
 // Public Digital Card View - Full Screen with Name in URL
 Route::get('/card/{slug}', [PublicCardController::class, 'show'])->name('card.public');
 // Template Card Routes (for users without digital cards)
-Route::get('/template/{userId}', [TemplateCardController::class, 'show'])->name('card.template');
+Route::get('card/{username}/{userId}', [TemplateCardController::class, 'show'])
+    ->name('card.template');
 Route::get('/template/{userId}/login', [TemplateCardController::class, 'showLoginForm'])->name('card.template.login');
 Route::post('/template/{userId}/login', [TemplateCardController::class, 'login'])->name('card.template.login.post');
 // Card Edit Login Routes

@@ -5,7 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ $user->name }} - Digital Card</title>
+    <meta name="description" content="Professional contact card with instant sharing">
+    <meta property="og:title" content="{{ $user->name }} - Elite+ Contact Card">
+    <meta property="og:description" content="Professional contact card with instant sharing">
+    <meta property="og:type" content="website">
+
     @vite(['resources/css/app.css'])
+
     <style>
         body {
             background-color: #000000;
@@ -71,8 +77,15 @@
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
         }
 
+        .card-with-notch {
+            background-image: url('{{ asset("card-background.png") }}');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
         .profile-ring {
-            box-shadow: 0 0 0 8px #000000, 0 0 40px rgba(0, 0, 0, 0.9);
+            box-shadow: 0 0 0 4px #f7f7f7, 0 0 40px rgba(0, 0, 0, 0.9);
         }
 
         .edit-icon-btn {
@@ -96,20 +109,29 @@
     <div class="lg:hidden phone-frame w-full max-w-sm">
         <div class="phone-screen">
             <div class="p-6 pt-12 pb-16 min-h-screen relative">
-                <!-- White Square (Top Left) -->
-                <div class="absolute top-6 left-6 w-12 h-12 bg-white rounded-xl shadow-lg z-10"></div>
-
-                <!-- Profile Image (Top Center) -->
-                <div class="flex justify-center mb-8 relative z-20">
-                    <div class="w-36 h-36 rounded-full bg-gradient-to-br from-gray-700 via-gray-800 to-gray-900 flex items-center justify-center profile-ring">
-                        <span class="text-white text-5xl font-bold">
-                            {{ substr($user->name, 0, 1) }}
-                        </span>
-                    </div>
+                <!-- Orange Logo (Top Left) -->
+                <div class="absolute top-6 left-6 z-10">
+                    <img src="{{ asset('orange.png') }}" alt="Orange Logo" class="w-12 h-12 object-contain">
                 </div>
 
-                <!-- White Card -->
-                <div class="bg-white rounded-3xl card-shadow p-8 mb-6">
+                <!-- Elite+ Badge (Top Right) -->
+                <div class="absolute top-6 right-6 z-10">
+                    <span class="text-gray-400 text-sm font-light">Elite+</span>
+                </div>
+
+                <!-- Card with Background Image -->
+                <div class="card-with-notch rounded-3xl card-shadow p-8 mt-24 mb-6 relative">
+                    <!-- Profile Image -->
+                    <div class="flex justify-center -mt-24 mb-6">
+                        <div class="w-32 h-32 rounded-full overflow-hidden profile-ring">
+                            <img src="{{ asset('profile-placeholder.jpg') }}"
+                                alt="{{ $user->name }}"
+                                class="w-full h-full object-cover"
+                                onerror="this.parentElement.innerHTML='<div class=\'w-full h-full bg-gradient-to-br from-gray-700 via-gray-800 to-gray-900 flex items-center justify-center\'><span class=\'text-white text-5xl font-bold\'>{{ substr($user->name, 0, 1) }}</span></div>'">
+                        </div>
+                    </div>
+
+                    <!-- Contact Info -->
                     <h1 class="text-2xl font-bold text-black text-center mb-2">
                         {{ $user->name }}
                     </h1>
@@ -121,14 +143,15 @@
                     <div class="border-t border-gray-300 my-6"></div>
 
                     <div class="text-center mb-6">
-                        <p class="text-gray-400 text-lg font-medium">
+                        <p class="text-gray-800 text-lg font-medium">
                             Phone Number
                         </p>
                     </div>
+
                     <div class="border-t border-gray-300 my-6"></div>
 
                     <div class="text-center">
-                        <p class="text-gray-400 text-base">
+                        <p class="text-gray-800 text-base">
                             {{ $user->email }}
                         </p>
                     </div>
@@ -158,41 +181,49 @@
             <div class="laptop-screen" style="height: 600px;">
                 <div class="h-full overflow-y-auto p-12 flex items-center justify-center">
                     <div class="w-full max-w-2xl relative">
-                        <!-- White Square (Top Left) -->
-                        <div class="absolute top-0 left-0 w-20 h-20 bg-white rounded-2xl shadow-xl z-10"></div>
+                        <!-- Orange Logo (Top Left) -->
+                        <div class="absolute top-0 left-0 z-10">
+                            <img src="{{ asset('orange.png') }}" alt="Orange Logo" class="w-20 h-20 object-contain">
+                        </div>
 
-                        <!-- Profile Image (Top Right) -->
-                        <div class="absolute -top-20 right-12 z-20">
-                            <div class="w-52 h-52 rounded-full bg-gradient-to-br from-gray-700 via-gray-800 to-gray-900 flex items-center justify-center profile-ring">
-                                <span class="text-white text-7xl font-bold">
-                                    {{ substr($user->name, 0, 1) }}
-                                </span>
-                            </div>
+                        <!-- Elite+ Badge (Top Right) -->
+                        <div class="absolute top-4 right-12 z-10">
+                            <span class="text-gray-400 text-xl font-light">Elite+</span>
                         </div>
 
                         <!-- Main Card -->
-                        <div class="relative pt-40">
-                            <div class="bg-white rounded-[2.5rem] card-shadow pt-24 pb-20 px-16">
+                        <div class="relative pt-20">
+                            <div class="card-with-notch rounded-[2.5rem] card-shadow pt-32 pb-20 px-16 relative">
+                                <!-- Profile Image -->
+                                <div class="absolute -top-28 left-1/2 transform -translate-x-1/2 z-20">
+                                    <div class="w-52 h-52 rounded-full overflow-hidden profile-ring">
+                                        <img src="{{ asset('profile-placeholder.jpg') }}"
+                                            alt="{{ $user->name }}"
+                                            class="w-full h-full object-cover"
+                                            onerror="this.parentElement.innerHTML='<div class=\'w-full h-full bg-gradient-to-br from-gray-700 via-gray-800 to-gray-900 flex items-center justify-center\'><span class=\'text-white text-7xl font-bold\'>{{ substr($user->name, 0, 1) }}</span></div>'">
+                                    </div>
+                                </div>
+
                                 <h1 class="text-5xl font-bold text-black text-center mb-4">
-                                    full name
+                                    {{ $user->name }}
                                 </h1>
 
                                 <p class="text-gray-500 text-center text-2xl mb-12">
-                                    job title
+                                    Professional
                                 </p>
 
                                 <div class="border-t border-gray-300 mb-12"></div>
 
                                 <div class="text-center mb-12">
-                                    <p class="text-gray-400 text-2xl font-medium">
+                                    <p class="text-gray-800 text-2xl font-medium">
                                         Phone Number
                                     </p>
                                 </div>
                                 <div class="border-t border-gray-300 mb-12"></div>
 
                                 <div class="text-center">
-                                    <p class="text-gray-400 text-xl">
-                                        username@orangecard.com
+                                    <p class="text-gray-800 text-xl">
+                                        {{ $user->email }}
                                     </p>
                                 </div>
                             </div>

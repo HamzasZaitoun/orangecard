@@ -42,11 +42,12 @@
                             View Card
                         </a>
                         @else
-                        <a href="{{ route('card.template', $user->id) }}"
+                        <a href="{{ route('card.template', ['username' => $user->username, 'userId' => $user->id]) }}"
                             target="_blank"
                             class="text-red-600 hover:underline font-semibold">
                             View Card
                         </a>
+
                         @endif
                     </td>
                     <td class="px-6 py-4">
