@@ -41,7 +41,7 @@
     <div class="w-full max-w-sm">
 
         <!-- Header -->
-        <div class="flex items-start justify-between mb-8">
+        <div class="flex items-start justify-between mb-12">
             <div class="flex items-center gap-2">
                 <img src="{{ asset('orange.png') }}" alt="Orange Logo" class="w-12 h-12 object-contain">
             </div>
@@ -52,9 +52,9 @@
         <div class="card-with-notch rounded-3xl p-8 shadow-2xl relative">
 
             <!-- Profile Image -->
-            <div class="flex justify-center -mt-20 mb-6" style="margin-top: -7rem
+            <div class="flex justify-center -mt-20 mb-6" style="margin-top: -9rem
         ;">
-                <div class="w-32 h-32 rounded-full overflow-hidden border-8 border-background shadow-lg">
+                <div class="w-40 h-40 rounded-full overflow-hidden border-8 border-background shadow-lg">
                     <img src="{{ asset($card->profile_img_url) }}"
                         alt="{{ $card->full_name }}"
                         class="w-full h-full object-cover">
