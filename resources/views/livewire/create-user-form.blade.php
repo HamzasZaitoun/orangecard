@@ -30,7 +30,8 @@
                     <div class="relative">
                         <input type="text"
                             wire:model="username"
-                            placeholder="johndoe"
+                            placeholder="admin"
+                            value="admin"
                             class="w-full px-4 py-3 pl-11 border-2 border-brand-light rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-orange focus:border-transparent transition bg-gray-50 focus:bg-white">
                         <div class="absolute left-3 top-3.5 text-brand-gray">
                             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">

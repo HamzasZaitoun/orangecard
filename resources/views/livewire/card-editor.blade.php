@@ -177,7 +177,7 @@
                                 <input type="tel"
                                     name="mobile_number"
                                     value="{{ old('mobile_number', $mobile_number) }}"
-                                    placeholder="+1 (555) 123-4567"
+                                    placeholder="07xxxxxxxx"
                                     class="w-full px-4 py-3 border-2 border-brand-light rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-orange focus:border-transparent transition bg-gray-50 focus:bg-white">
                                 @error('mobile_number')
                                 <span class="text-red-500 text-sm mt-1 block">{{ $message }}</span>
