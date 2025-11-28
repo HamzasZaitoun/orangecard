@@ -12,9 +12,9 @@ class User extends Authenticatable
 
     protected $fillable = [
         'name',
-        'username',
         'email',
         'password',
+        'username',
         'user_role',
         'is_active',
     ];
@@ -30,45 +30,38 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
             'is_active' => 'boolean',
-
         ];
     }
 
-    // Relationships
     public function digitalCard()
     {
         return $this->hasOne(DigitalCard::class);
     }
 
-    // Role Helpers
-    public function isSuperAdmin(): bool
+    public function isSuperAdmin()
     {
         return $this->user_role === 'super_admin';
     }
 
-    public function isAdmin(): bool
+    public function isAdmin()
     {
-        return $this->user_role === 'admin' || $this->isSuperAdmin();
+        return $this->user_role === 'admin';
     }
 
-    public function isStandard(): bool
+    public function isStandard()
     {
         return $this->user_role === 'standard';
     }
 
-    // Scopes
-    public function scopeActive($query)
+    // Ensure we always have a username for slug generation
+    public function getUsernameAttribute($value)
     {
-        return $query->where('is_active', true);
-    }
-
-    public function scopeStandardUsers($query)
-    {
-        return $query->where('user_role', 'standard');
-    }
-
-    public function scopeAdmins($query)
-    {
-        return $query->where('user_role', 'admin');
+        if (empty($value)) {
+            // Generate username from email if not set
+            $username = str_replace('@', '.', $this->email);
+            $username = preg_replace('/[^a-zA-Z0-9._]/', '', $username);
+            return $username;
+        }
+        return $value;
     }
 }

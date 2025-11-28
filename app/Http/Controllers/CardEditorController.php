@@ -25,6 +25,7 @@ class CardEditorController extends Controller
 
     public function update(Request $request)
     {
+
         $request->validate([
             'first_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
@@ -43,6 +44,7 @@ class CardEditorController extends Controller
             'job_title' => $request->job_title,
             'mobile_number' => $request->mobile_number,
             'email' => $request->email,
+            'public_slug' => $user->username,
         ]);
 
         // Handle image upload

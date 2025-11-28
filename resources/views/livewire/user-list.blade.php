@@ -1,3 +1,4 @@
+<!-- Updated user-list.blade.php -->
 <div>
     <div class="mb-6 flex justify-between items-center">
         <h2 class="text-2xl font-bold text-brand-black">Standard Users</h2>
@@ -35,13 +36,17 @@
                     <td class="px-6 py-4">{{ $user->username }}</td>
                     <td class="px-6 py-4">
                         @if($user->digitalCard)
-                        <a href="{{ route('card.public', $user->digitalCard->public_slug) }}"
+                        <a href="{{ route('card.public', $user->username) }}"
                             target="_blank"
-                            class="text-brand-orange hover:underline">
+                            class="text-green-600 hover:underline font-semibold">
                             View Card
                         </a>
                         @else
-                        <span class="text-brand-gray text-sm">No card</span>
+                        <a href="{{ route('card.template', $user->id) }}"
+                            target="_blank"
+                            class="text-red-600 hover:underline font-semibold">
+                            View Card
+                        </a>
                         @endif
                     </td>
                     <td class="px-6 py-4">

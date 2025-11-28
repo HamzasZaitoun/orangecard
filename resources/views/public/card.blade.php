@@ -172,6 +172,25 @@
         </div>
     </div>
 
+    {{-- Add this somewhere in your public card view --}}
+    @auth
+    @if(auth()->id() === $card->user_id)
+    <div class="fixed top-4 right-4">
+        <a href="{{ route('dashboard.edit') }}"
+            class="bg-brand-orange text-white px-4 py-2 rounded-lg hover:bg-opacity-90 transition">
+            Edit Card
+        </a>
+    </div>
+    @endif
+    @else
+    <div class="fixed top-4 right-4">
+        <a href="{{ route('card.edit.login', $card->public_slug) }}"
+            class="bg-brand-orange text-white px-4 py-2 rounded-lg hover:bg-opacity-90 transition">
+            Edit Card
+        </a>
+    </div>
+    @endauth
+
     <!-- Desktop View: Laptop Frame (visible on desktop only) -->
     <div class="hidden lg:block w-full max-w-6xl">
         <div class="laptop-frame">

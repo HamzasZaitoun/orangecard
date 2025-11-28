@@ -13,8 +13,8 @@ class PublicCardController extends Controller
             ->with('user')
             ->firstOrFail();
 
-        // Check if user is active
-        if (!$card->user->is_active) {
+        // Check if user exists and is active
+        if (!$card->user || !$card->user->is_active) {
             abort(404, 'This card is no longer available.');
         }
 

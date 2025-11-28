@@ -6,63 +6,58 @@ use Livewire\Component;
 use Livewire\WithPagination;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 class UserList extends Component
 {
     use WithPagination;
 
     public $search = '';
-    public $confirmingDelete = false;
-    public $userToDelete = null;
     public $showPasswordModal = false;
-    public $userToResetPassword = null;
+    public $confirmingDelete = false;
+    public $selectedUser;
     public $newPassword = '';
     public $confirmPassword = '';
 
-    protected $queryString = ['search'];
-
-    public function mount()
+    public function render()
     {
-        $this->showPasswordModal = false;
-        $this->confirmingDelete = false;
+        $users = User::where('user_role', 'standard')
+            ->where(function ($query) {
+                $query->where('name', 'like', '%' . $this->search . '%')
+                    ->orWhere('email', 'like', '%' . $this->search . '%')
+                    ->orWhere('username', 'like', '%' . $this->search . '%');
+            })
+            ->paginate(10);
+
+        return view('livewire.user-list', compact('users'));
     }
 
-    public function updatingSearch()
+    public function createCard($userId)
     {
-        $this->resetPage();
-    }
+        $user = User::findOrFail($userId);
 
-    public function confirmDelete($userId)
-    {
-        $this->confirmingDelete = true;
-        $this->userToDelete = $userId;
-    }
+        // Create digital card with default values if it doesn't exist
+        if (!$user->digitalCard) {
+            $digitalCard = $user->digitalCard()->create([
+                'first_name' => $user->name,
+                'last_name' => '',
+                'job_title' => 'Professional',
+                'email' => $user->email,
+                'mobile_number' => '',
+                'public_slug' => $user->username,
+            ]);
 
-    public function deleteUser()
-    {
-        if ($this->userToDelete) {
-            $user = User::find($this->userToDelete);
-            if ($user && $user->isStandard()) {
-                $user->is_active = false;
-                $user->save();
-
-                session()->flash('message', 'User deactivated successfully!');
-            }
+            // Use the created digital card directly
+            return redirect()->route('card.public', $digitalCard->public_slug);
         }
 
-        $this->confirmingDelete = false;
-        $this->userToDelete = null;
+        // If card already exists, redirect to it
+        return redirect()->route('card.public', $user->digitalCard->public_slug);
     }
 
     public function openPasswordModal($userId)
     {
-        // Only super admin can reset passwords
-        if (!auth()->user()->isSuperAdmin()) {
-            session()->flash('error', 'Only Super Admin can reset passwords.');
-            return;
-        }
-
-        $this->userToResetPassword = $userId;
+        $this->selectedUser = User::findOrFail($userId);
         $this->showPasswordModal = true;
         $this->newPassword = '';
         $this->confirmPassword = '';
@@ -71,10 +66,8 @@ class UserList extends Component
     public function closePasswordModal()
     {
         $this->showPasswordModal = false;
-        $this->userToResetPassword = null;
-        $this->newPassword = '';
-        $this->confirmPassword = '';
-        $this->resetValidation();
+        $this->selectedUser = null;
+        $this->reset(['newPassword', 'confirmPassword']);
     }
 
     public function resetPassword()
@@ -82,42 +75,27 @@ class UserList extends Component
         $this->validate([
             'newPassword' => 'required|min:8',
             'confirmPassword' => 'required|same:newPassword',
-        ], [
-            'newPassword.required' => 'New password is required',
-            'newPassword.min' => 'Password must be at least 8 characters',
-            'confirmPassword.required' => 'Please confirm the password',
-            'confirmPassword.same' => 'Passwords do not match',
         ]);
 
-        $user = User::find($this->userToResetPassword);
+        $this->selectedUser->update([
+            'password' => Hash::make($this->newPassword),
+        ]);
 
-        if ($user) {
-            $user->password = Hash::make($this->newPassword);
-            $user->save();
-
-            session()->flash('message', "Password updated successfully for {$user->name}");
-        }
-
+        session()->flash('message', 'Password reset successfully!');
         $this->closePasswordModal();
     }
 
-    public function render()
+    public function confirmDelete($userId)
     {
-        $users = User::standardUsers()
-            ->active()
-            ->when($this->search, function ($query) {
-                $query->where(function ($q) {
-                    $q->where('name', 'like', '%' . $this->search . '%')
-                        ->orWhere('email', 'like', '%' . $this->search . '%')
-                        ->orWhere('username', 'like', '%' . $this->search . '%');
-                });
-            })
-            ->with('digitalCard')
-            ->latest()
-            ->paginate(15);
+        $this->selectedUser = User::findOrFail($userId);
+        $this->confirmingDelete = true;
+    }
 
-        return view('livewire.user-list', [
-            'users' => $users
-        ])->layout('layouts.app');
+    public function deleteUser()
+    {
+        $this->selectedUser->update(['is_active' => false]);
+        session()->flash('message', 'User deactivated successfully!');
+        $this->confirmingDelete = false;
+        $this->selectedUser = null;
     }
 }

@@ -8,36 +8,25 @@ use Symfony\Component\HttpFoundation\Response;
 
 class CheckRole
 {
-    /**
-     * Handle an incoming request.
-     *
-     * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
-     */
     public function handle(Request $request, Closure $next, string $role): Response
     {
         if (!auth()->check()) {
-
             return redirect()->route('login');
         }
 
         $user = auth()->user();
 
-        // Check if user is active
-        if (!$user->is_active) {
-            auth()->logout();
-            return redirect()->route('login')->with('error', 'Your account has been deactivated.');
+        // Map the role parameter to the user_role column values
+        if ($role === 'super_admin' && !$user->isSuperAdmin()) {
+            abort(403);
         }
 
-        // Role validation
-        $allowed = match ($role) {
-            'super_admin' => $user->isSuperAdmin(),
-            'admin' => $user->isAdmin(),
-            'standard' => $user->isStandard(),
-            default => false,
-        };
+        if ($role === 'admin' && !$user->isAdmin()) {
+            abort(403);
+        }
 
-        if (!$allowed) {
-            abort(403, 'Unauthorized access.');
+        if ($role === 'standard' && !$user->isStandard()) {
+            abort(403);
         }
 
         return $next($request);
