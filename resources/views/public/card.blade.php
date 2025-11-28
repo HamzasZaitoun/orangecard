@@ -5,328 +5,112 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ $card->full_name }} - Digital Card</title>
+    <meta name="description" content="Professional contact card with instant sharing">
+    <meta property="og:title" content="{{ $card->full_name }} - Elite+ Contact Card">
+    <meta property="og:description" content="Professional contact card with instant sharing">
+    <meta property="og:type" content="website">
 
     @vite(['resources/css/app.css'])
 
     <style>
-        /* Reset and Base Styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background-color: #000000;
-            height: 100vh;
-            overflow: hidden;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        /* Mobile Container */
-        .mobile-container {
-            width: 375px;
-            height: 812px;
-            background-color: #000000;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            padding: 60px 20px 20px;
-        }
-
-        /* Header Section */
-        .header {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            padding: 60px 20px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-        }
-
-        .logo {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-        }
-
-        .logo-icon {
-            background-color: #FF8000;
-            color: white;
-            padding: 4px 8px;
-            font-size: 14px;
-            font-weight: bold;
-            border-radius: 2px;
-        }
-
-        .logo-text {
-            color: white;
-            font-size: 10px;
-            margin-top: 2px;
-        }
-
-        .elite-badge {
-            color: white;
-            font-size: 16px;
-            font-weight: 500;
-        }
-
-        /* Main Content */
-        .main-content {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 40px 0;
-            /* Added position relative for z-index context */
-            position: relative;
-        }
-
-        /* Contact Card */
-        .contact-card {
-            background-color: #F7F7F7;
-            border-radius: 20px;
-            padding: 60px 30px 40px;
-            width: 100%;
-            max-width: 280px;
-            text-align: center;
-            position: relative;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-            animation: fadeIn 0.6s ease-out;
-        }
-
-        /* Profile Picture */
-        .profile-picture {
-            position: absolute;
-            top: -40px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            overflow: hidden;
-            border: 3px solid #F7F7F7;
-            z-index: 2;
-        }
-
-        .profile-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        /* Contact Information */
-        .contact-info {
-            margin-top: 20px;
-        }
-
-        .name {
-            font-size: 24px;
-            font-weight: bold;
-            color: #000000;
-            margin-bottom: 8px;
-        }
-
-        .title {
-            font-size: 16px;
-            color: #666666;
-            margin-bottom: 20px;
-        }
-
-        .separator {
-            width: 60%;
-            height: 1px;
-            background-color: #B0B0B0;
-            margin: 16px auto;
-        }
-
-        .phone,
-        .email {
-            font-size: 16px;
-            color: #000000;
-            margin: 8px 0;
-            font-weight: 500;
-        }
-
-        /* Button Container */
-        .button-container {
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            padding: 20px 0;
-        }
-
-        .add-contact-wrapper {
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            text-decoration: none;
-        }
-
-        .add-contact-btn {
-            background-color: #FF8000;
-            color: white;
-            border: none;
-            border-radius: 12px;
-            padding: 14px 40px;
-            font-size: 16px;
-            font-weight: 500;
-            cursor: pointer;
-            width: 90%;
-            max-width: 200px;
-            box-shadow: 0 4px 16px rgba(255, 128, 0, 0.3);
-            transition: all 0.2s ease;
-            animation: fadeIn 0.8s ease-out;
-        }
-
-        .add-contact-btn:hover {
-            background-color: #e6740d;
-            transform: translateY(-1px);
-            box-shadow: 0 6px 20px rgba(255, 128, 0, 0.4);
-        }
-
-        /* Footer */
-        .footer {
-            position: absolute;
-            bottom: 20px;
-            left: 20px;
-            z-index: 10;
-            /* Ensure it is above main content */
-        }
-
-        /* Using the 'edit-link' style from your original code for better visibility/interactivity */
-        .edit-link {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 32px;
-            height: 32px;
-            border-radius: 6px;
-            background-color: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            transition: all 0.2s ease;
-            text-decoration: none;
-        }
-
-        .edit-link:hover {
-            background-color: rgba(255, 255, 255, 0.2);
-            transform: translateY(-1px);
-        }
-
-        .edit-icon {
-            color: #ccc;
-            /* Changed from 'white' to '#ccc' for consistency with original visual intent */
-            width: 18px;
-            height: 18px;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 480px) {
-            .mobile-container {
-                width: 100%;
-                height: 100vh;
-                padding: 40px 16px 16px;
-            }
-
-            .contact-card {
-                max-width: 100%;
-                padding: 50px 20px 30px;
-            }
-
-            .name {
-                font-size: 20px;
-            }
-        }
-
-        /* Animation */
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        :root {
+            --background: 0 0% 0%;
+            --foreground: 0 0% 100%;
+            --card: 0 0% 97%;
+            --card-foreground: 0 0% 10%;
+            --primary: 30 100% 50%;
+            --primary-foreground: 0 0% 100%;
+            --secondary: 0 0% 20%;
+            --muted: 0 0% 40%;
+            --muted-foreground: 0 0% 70%;
+            --border: 0 0% 85%;
+            --logo-orange: 30 100% 50%;
         }
     </style>
 </head>
 
-<body>
+<body class="bg-background text-foreground min-h-screen flex items-center justify-center p-4">
 
-    <div class="mobile-container">
+    <div class="w-full max-w-sm">
 
-        <header class="header">
-            <div class="logo">
-                <div class="logo-icon">orange</div>
-                <div class="logo-text">is here</div>
+        <!-- Header -->
+        <div class="flex items-start justify-between mb-8">
+            <div class="flex items-center gap-2">
+                <img src="{{ asset('orange.png') }}" alt="Orange Logo" class="w-12 h-12 object-contain">
             </div>
-            <div class="elite-badge">Elite+</div>
-        </header>
+            <div class="text-muted-foreground text-sm font-light">Elite+</div>
+        </div>
 
-        <main class="main-content">
-            <div class="contact-card">
+        <!-- Contact Card -->
+        <div class="bg-card rounded-3xl p-8 shadow-2xl relative">
 
-                <div class="profile-picture">
+            <!-- Profile Image -->
+            <div class="flex justify-center -mt-20 mb-6">
+                <div class="w-32 h-32 rounded-full overflow-hidden border-8 border-background shadow-lg">
                     <img src="{{ asset($card->profile_img_url) }}"
                         alt="{{ $card->full_name }}"
-                        class="profile-img">
+                        class="w-full h-full object-cover">
                 </div>
-
-                <div class="contact-info">
-                    <h1 class="name">{{ $card->full_name }}</h1>
-                    <p class="title">{{ $card->job_title }}</p>
-
-                    <div class="separator"></div>
-
-                    <p class="phone">{{ $card->mobile_number }}</p>
-
-                    <div class="separator"></div>
-
-                    <p class="email">{{ $card->email }}</p>
-                </div>
-
             </div>
-        </main>
 
-        <div class="button-container">
-            <a href="{{ route('card.vcard', $card->public_slug) }}" class="add-contact-wrapper">
-                <button class="add-contact-btn">
+            <!-- Contact Info -->
+            <div class="text-center space-y-4">
+                <h1 class="text-2xl font-bold text-card-foreground">
+                    {{ $card->full_name }}
+                </h1>
+                <p class="text-muted-foreground text-sm">{{ $card->job_title }}</p>
+
+                <div class="space-y-3 pt-2">
+                    <div class="border-t border-border pt-3">
+                        <p class="text-card-foreground font-medium">{{ $card->mobile_number }}</p>
+                    </div>
+                    <div class="border-t border-border pt-3">
+                        <p class="text-card-foreground font-medium">{{ $card->email }}</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="mt-8 flex items-center gap-4">
+            <a href="{{ route('card.vcard', $card->public_slug) }}" class="flex-1">
+                <button class="w-full bg-primary hover:bg-primary/90 text-primary-foreground rounded-xl h-14 text-base font-semibold shadow-lg transition-all">
                     Add Contact
                 </button>
             </a>
-        </div>
 
-        <footer class="footer">
             @auth
             @if(auth()->id() === $card->user_id)
-            <a href="{{ route('dashboard.edit') }}" class="edit-link">
-                <svg class="edit-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
+            <a href="{{ route('dashboard.edit') }}"
+                class="h-14 w-14 rounded-xl hover:bg-secondary flex items-center justify-center transition-all">
+                <svg class="h-5 w-5 text-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z">
+                    </path>
                 </svg>
             </a>
             @else
-            <a href="{{ route('card.edit.login.form', $card->public_slug) }}" class="edit-link">
-                <svg class="edit-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
+            <a href="{{ route('card.edit.login.form', $card->public_slug) }}"
+                class="h-14 w-14 rounded-xl hover:bg-secondary flex items-center justify-center transition-all">
+                <svg class="h-5 w-5 text-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z">
+                    </path>
                 </svg>
             </a>
             @endif
             @else
-            <a href="{{ route('card.edit.login.form', $card->public_slug) }}" class="edit-link">
-                <svg class="edit-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
+            <a href="{{ route('card.edit.login.form', $card->public_slug) }}"
+                class="h-14 w-14 rounded-xl hover:bg-secondary flex items-center justify-center transition-all">
+                <svg class="h-5 w-5 text-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z">
+                    </path>
                 </svg>
             </a>
             @endauth
-        </footer>
+        </div>
 
     </div>
 

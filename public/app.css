@@ -16,3 +16,27 @@
         animation: gradient 3s ease infinite;
     }
 }
+
+@layer base {
+  :root {
+    --background: 0 0% 0%;
+    --foreground: 0 0% 100%;
+    --card: 0 0% 97%;
+    --card-foreground: 0 0% 10%;
+    --primary: 30 100% 50%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 0 0% 20%;
+    --muted: 0 0% 40%;
+    --muted-foreground: 0 0% 70%;
+    --border: 0 0% 85%;
+    --logo-orange: 30 100% 50%;
+  }
+  
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-foreground;
+  }
+}
