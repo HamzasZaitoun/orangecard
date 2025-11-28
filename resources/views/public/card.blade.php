@@ -49,7 +49,7 @@
         </div>
 
         <!-- Contact Card -->
-        <div class="card-with-notch rounded-3xl p-8 shadow-2xl relative">
+        <div class="card-with-notch rounded-3xl p-8 shadow-2xl relative" style="margin-top: 9rem">
 
             <!-- Profile Image -->
             <div class="flex justify-center -mt-20 mb-6" style="margin-top: -9rem
