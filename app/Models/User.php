@@ -59,6 +59,21 @@ class User extends Authenticatable
     }
 
 
+    // ------------------- HELPERS --------------------------
+
+
+
+    public function isAdmin()
+    {
+        return $this->user_role === 'admin';
+    }
+
+    public function isSuperAdmin()
+    {
+        return $this->user_role === 'super_admin';
+    }
+
+
     // Ensure we always have a username for slug generation
     public function getUsernameAttribute($value)
     {
