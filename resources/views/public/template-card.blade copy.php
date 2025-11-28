@@ -92,14 +92,11 @@
 
 <body class="min-h-screen flex items-center justify-center p-4">
 
-    <!-- Mobile View: Phone Frame (visible on mobile only) -->
     <div class="lg:hidden phone-frame w-full max-w-sm">
         <div class="phone-screen">
             <div class="p-6 pt-12 pb-16 min-h-screen relative">
-                <!-- White Square (Top Left) -->
                 <div class="absolute top-6 left-6 w-12 h-12 bg-white rounded-xl shadow-lg z-10"></div>
 
-                <!-- Profile Image (Top Center) -->
                 <div class="flex justify-center mb-8 relative z-20">
                     <div class="w-36 h-36 rounded-full bg-gradient-to-br from-gray-700 via-gray-800 to-gray-900 flex items-center justify-center profile-ring">
                         <span class="text-white text-5xl font-bold">
@@ -108,7 +105,6 @@
                     </div>
                 </div>
 
-                <!-- White Card -->
                 <div class="bg-white rounded-3xl card-shadow p-8 mb-6">
                     <h1 class="text-2xl font-bold text-black text-center mb-2">
                         {{ $user->name }}
@@ -134,13 +130,11 @@
                     </div>
                 </div>
 
-                <!-- Add Contact Button -->
                 <button disabled
                     class="block w-full bg-gray-400 text-white font-bold py-4 rounded-3xl shadow-xl text-center text-lg cursor-not-allowed opacity-70 mb-20">
                     Add Contact
                 </button>
 
-                <!-- Edit Icon Button -->
                 <a href="{{ route('card.template.login', $user->id) }}"
                     class="edit-icon-btn bg-white p-3 rounded-2xl shadow-2xl hover:scale-110 transition-transform">
                     <svg class="w-6 h-6 text-black" fill="currentColor" viewBox="0 0 20 20">
@@ -152,59 +146,50 @@
         </div>
     </div>
 
-    <!-- Desktop View: Laptop Frame (visible on desktop only) -->
     <div class="hidden lg:block w-full max-w-6xl">
         <div class="laptop-frame">
             <div class="laptop-screen" style="height: 600px;">
                 <div class="h-full overflow-y-auto p-12 flex items-center justify-center">
                     <div class="w-full max-w-2xl relative">
-                        <!-- White Square (Top Left) -->
                         <div class="absolute top-0 left-0 w-20 h-20 bg-white rounded-2xl shadow-xl z-10"></div>
 
-                        <!-- Profile Image (Top Right) -->
                         <div class="absolute -top-20 right-12 z-20">
                             <div class="w-52 h-52 rounded-full bg-gradient-to-br from-gray-700 via-gray-800 to-gray-900 flex items-center justify-center profile-ring">
                                 <span class="text-white text-7xl font-bold">
-                                    {{ substr($user->name, 0, 1) }}
-                                </span>
+                                    {{ substr($user->name, 0, 1) }} </span>
                             </div>
                         </div>
 
-                        <!-- Main Card -->
                         <div class="relative pt-40">
                             <div class="bg-white rounded-[2.5rem] card-shadow pt-24 pb-20 px-16">
                                 <h1 class="text-5xl font-bold text-black text-center mb-4">
-                                    full name
+                                    {{ $user->name }}
                                 </h1>
 
                                 <p class="text-gray-500 text-center text-2xl mb-12">
-                                    job title
-                                </p>
+                                    Professional </p>
 
                                 <div class="border-t border-gray-300 mb-12"></div>
 
                                 <div class="text-center mb-12">
                                     <p class="text-gray-400 text-2xl font-medium">
-                                        Phone Number
-                                    </p>
+                                        Phone Number </p>
                                 </div>
                                 <div class="border-t border-gray-300 mb-12"></div>
 
                                 <div class="text-center">
                                     <p class="text-gray-400 text-xl">
-                                        username@orangecard.com
+                                        {{ $user->email }}
                                     </p>
                                 </div>
                             </div>
 
-                            <!-- Add Contact Button -->
                             <div class="mt-12 px-4 relative pb-20">
                                 <button disabled
                                     class="block w-full bg-gray-400 text-white font-bold py-7 rounded-3xl shadow-xl text-center text-2xl cursor-not-allowed opacity-70">
                                     Add Contact
                                 </button>
 
-                                <!-- Edit Icon Button -->
                                 <a href="{{ route('card.template.login', $user->id) }}"
                                     class="absolute bottom-5 left-8 bg-white p-5 rounded-2xl shadow-2xl hover:scale-110 transition-transform duration-300">
                                     <svg class="w-8 h-8 text-black" fill="currentColor" viewBox="0 0 20 20">
@@ -218,7 +203,6 @@
                 </div>
             </div>
         </div>
-        <!-- Laptop Base -->
         <div class="laptop-base">
             <div class="laptop-notch"></div>
         </div>
