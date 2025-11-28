@@ -37,21 +37,27 @@ class User extends Authenticatable
     {
         return $this->hasOne(DigitalCard::class);
     }
-
-    public function isSuperAdmin()
+    public function scopeStandardUsers($query)
     {
-        return $this->user_role === 'super_admin';
+        return $query->where('user_role', 'standard');
     }
 
-    public function isAdmin()
+    public function scopeAdmins($query)
     {
-        return $this->user_role === 'admin';
+        return $query->where('user_role', 'admin');
     }
 
+    public function scopeActive($query)
+    {
+        return $query->where('is_active', 1);
+    }
+
+    // Optional helper for role check
     public function isStandard()
     {
         return $this->user_role === 'standard';
     }
+
 
     // Ensure we always have a username for slug generation
     public function getUsernameAttribute($value)
