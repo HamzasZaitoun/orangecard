@@ -44,6 +44,7 @@
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
+            z-index: 10;
         }
 
         .logo {
@@ -68,9 +69,9 @@
         }
 
         .elite-badge {
-            color: #fff;
+            color: #ccc;
             font-size: 16px;
-            font-weight: 500;
+            font-weight: 400;
         }
 
         .main-content {
@@ -78,19 +79,35 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            margin: 40px 0;
+            margin: 20px 0;
+            position: relative;
         }
 
         .contact-card {
-            background-color: #F7F7F7;
-            border-radius: 20px;
-            padding: 60px 30px 40px;
+            background-color: #EDEDED;
+            border-radius: 24px 24px 32px 32px;
+            padding: 70px 30px 40px;
             width: 100%;
             max-width: 280px;
             text-align: center;
             position: relative;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
             animation: fadeIn 0.6s ease-out;
+            margin-top: 40px;
+        }
+
+        /* Create the dip for profile picture */
+        .contact-card::before {
+            content: '';
+            position: absolute;
+            top: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 80px;
+            background-color: #EDEDED;
+            border-radius: 0 0 60px 60px;
+            z-index: 1;
         }
 
         .profile-picture {
@@ -102,8 +119,9 @@
             height: 80px;
             border-radius: 50%;
             overflow: hidden;
-            border: 3px solid #F7F7F7;
-            z-index: 2;
+            border: 2px solid #000;
+            z-index: 3;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
         }
 
         .profile-img {
@@ -113,7 +131,9 @@
         }
 
         .contact-info {
-            margin-top: 20px;
+            margin-top: 30px;
+            position: relative;
+            z-index: 2;
         }
 
         .name {
@@ -127,10 +147,11 @@
             font-size: 16px;
             color: #666;
             margin-bottom: 20px;
+            font-weight: 400;
         }
 
         .separator {
-            width: 60%;
+            width: 70%;
             height: 1px;
             background-color: #B0B0B0;
             margin: 16px auto;
@@ -144,12 +165,15 @@
             font-weight: 500;
         }
 
-        /* NEW IMPROVED ADD CONTACT SECTION */
+        .phone {
+            font-weight: bold;
+        }
+
         .button-container {
             width: 100%;
             display: flex;
             justify-content: center;
-            padding: 40px 0 20px;
+            padding: 30px 0 20px;
         }
 
         .add-contact-wrapper {
@@ -163,7 +187,7 @@
             background-color: #FF8000;
             color: white;
             border: none;
-            border-radius: 16px;
+            border-radius: 20px;
             padding: 18px 0;
             font-size: 18px;
             font-weight: 600;
@@ -181,12 +205,32 @@
             position: absolute;
             bottom: 20px;
             left: 20px;
+            z-index: 10;
+        }
+
+        .edit-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            border-radius: 6px;
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.2s ease;
+            text-decoration: none;
+        }
+
+        .edit-link:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-1px);
         }
 
         .edit-icon {
-            color: white;
-            width: 24px;
-            height: 24px;
+            color: #ccc;
+            width: 16px;
+            height: 16px;
         }
 
         @keyframes fadeIn {
@@ -198,6 +242,17 @@
             to {
                 opacity: 1;
                 transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 375px) {
+            .mobile-container {
+                width: 100%;
+                padding: 60px 15px 15px;
+            }
+
+            .contact-card {
+                max-width: 100%;
             }
         }
     </style>
@@ -220,11 +275,11 @@
         <main class="main-content">
             <div class="contact-card">
 
-                <!-- PROFILE IMAGE (NO PLACEHOLDER) -->
+                <!-- PROFILE IMAGE -->
                 <div class="profile-picture">
                     <img src="{{ asset($card->profile_img_url) }}"
                         alt="{{ $card->full_name }}"
-                        class="w-full h-full object-cover">
+                        class="profile-img">
                 </div>
 
                 <div class="contact-info">
@@ -256,10 +311,24 @@
         <footer class="footer">
             @auth
             @if(auth()->id() === $card->user_id)
-            <a href="{{ route('dashboard.edit') }}" class="edit-icon">
-                ✏️
+            <a href="{{ route('card.edit', $card->public_slug) }}" class="edit-link">
+                <svg class="edit-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
+                </svg>
+            </a>
+            @else
+            <a href="{{ route('card.edit.login.form', $card->public_slug) }}" class="edit-link">
+                <svg class="edit-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
+                </svg>
             </a>
             @endif
+            @else
+            <a href="{{ route('card.edit.login.form', $card->public_slug) }}" class="edit-link">
+                <svg class="edit-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
+                </svg>
+            </a>
             @endauth
         </footer>
 
