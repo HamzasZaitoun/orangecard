@@ -93,7 +93,7 @@ class UserList extends Component
 
     public function deleteUser()
     {
-        $this->selectedUser->update(['is_active' => false]);
+        $this->selectedUser->delete();
         session()->flash('message', 'User deactivated successfully!');
         $this->confirmingDelete = false;
         $this->selectedUser = null;

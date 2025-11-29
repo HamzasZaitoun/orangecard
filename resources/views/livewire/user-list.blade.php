@@ -60,7 +60,7 @@
                             @endif
                             <button wire:click="confirmDelete({{ $user->id }})"
                                 class="bg-red-500 text-white px-3 py-1 rounded text-sm hover:bg-red-600 transition">
-                                Deactivate
+                                delete
                             </button>
                         </div>
                     </td>
@@ -128,11 +128,11 @@
     <div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
         <div class="bg-white rounded-lg p-6 max-w-md w-full mx-4">
             <h3 class="text-xl font-bold text-brand-black mb-4">Confirm Deactivation</h3>
-            <p class="text-brand-gray mb-6">Are you sure you want to deactivate this user? They will no longer be able to log in.</p>
+            <p class="text-brand-gray mb-6">Are you sure you want to delete this user? They will no longer be able to log in.</p>
             <div class="flex space-x-4">
                 <button wire:click="deleteUser"
                     class="flex-1 bg-red-500 text-white py-2 rounded-lg hover:bg-red-600 transition">
-                    Deactivate
+                    delete
                 </button>
                 <button wire:click="$set('confirmingDelete', false)"
                     class="flex-1 bg-brand-gray text-white py-2 rounded-lg hover:bg-opacity-90 transition">
