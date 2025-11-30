@@ -40,21 +40,11 @@
             align-items: flex-start;
         }
 
-        .logo-box {
-            background-color: #ff8000;
-            width: 80px;
-            height: 80px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 4px;
-            margin-bottom: 0.5rem;
-        }
-
         .logo-text {
             color: #000;
             font-size: 0.75rem;
             font-weight: 600;
+            margin-top: 0.5rem;
         }
 
         .elite-logo {
@@ -124,10 +114,7 @@
             <!-- Header -->
             <div class="header-section">
                 <div class="logo-container">
-                    <div class="logo-box">
-                        <img src="{{ asset('orange.png') }}" alt="Orange"
-                            style="width: 55px; height: 55px; object-fit: contain;">
-                    </div>
+                    <img src="{{ asset('orange.png') }}" alt="Orange Logo" class="w-20 h-20 object-contain">
                     <span class="logo-text">is here</span>
                 </div>
                 <img src="{{ asset('elite-plus-logo.png') }}" alt="Elite+" class="elite-logo">
