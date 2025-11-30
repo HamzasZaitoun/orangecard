@@ -99,7 +99,7 @@ class PublicCardController extends Controller
         $vcf[] = "N:{$lastName};{$firstName};;;";
         $vcf[] = "FN:{$visitorName}";
         $vcf[] = "TEL;TYPE=CELL:{$visitorMobile}";
-        $vcf[] = "NOTE:Met via {$card->full_name}'s OrangeCard";
+        $vcf[] = "NOTE:Met via {$card->full_name}'s Orange E Card";
         $vcf[] = "REV:" . now()->format('Y-m-d\TH:i:s\Z');
         $vcf[] = "END:VCARD";
 

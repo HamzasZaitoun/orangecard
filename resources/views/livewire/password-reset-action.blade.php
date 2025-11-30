@@ -1,7 +1,7 @@
 <div class="min-h-screen bg-brand-black flex items-center justify-center p-4">
     <div class="w-full max-w-md">
         <div class="text-center mb-8">
-            <h1 class="text-4xl font-bold text-brand-orange mb-2">OrangeCard</h1>
+            <h1 class="text-4xl font-bold text-brand-orange mb-2">Orange E Card</h1>
             <p class="text-white">Password Reset Required</p>
         </div>
 
@@ -19,11 +19,10 @@
                     <label class="block text-sm font-medium text-brand-black mb-2">
                         Current Password *
                     </label>
-                    <input type="password"
-                        wire:model="current_password"
+                    <input type="password" wire:model="current_password"
                         class="w-full px-4 py-2 border border-brand-gray rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-orange">
                     @error('current_password')
-                    <span class="text-red-500 text-sm">{{ $message }}</span>
+                        <span class="text-red-500 text-sm">{{ $message }}</span>
                     @enderror
                 </div>
 
@@ -32,11 +31,10 @@
                     <label class="block text-sm font-medium text-brand-black mb-2">
                         New Password *
                     </label>
-                    <input type="password"
-                        wire:model="password"
+                    <input type="password" wire:model="password"
                         class="w-full px-4 py-2 border border-brand-gray rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-orange">
                     @error('password')
-                    <span class="text-red-500 text-sm">{{ $message }}</span>
+                        <span class="text-red-500 text-sm">{{ $message }}</span>
                     @enderror
                     <p class="text-xs text-brand-gray mt-1">
                         Minimum 8 characters
@@ -48,8 +46,7 @@
                     <label class="block text-sm font-medium text-brand-black mb-2">
                         Confirm New Password *
                     </label>
-                    <input type="password"
-                        wire:model="password_confirmation"
+                    <input type="password" wire:model="password_confirmation"
                         class="w-full px-4 py-2 border border-brand-gray rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-orange">
                 </div>
 

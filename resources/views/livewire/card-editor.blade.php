@@ -4,7 +4,7 @@
             <div
                 class="mb-8 bg-gradient-to-r from-brand-orange via-red-500 to-yellow-500 rounded-2xl p-8 text-white shadow-2xl relative overflow-hidden">
                 <div class="relative z-10">
-                    <h2 class="text-3xl font-bold mb-2">Welcome to OrangeCard! 🎉</h2>
+                    <h2 class="text-3xl font-bold mb-2">Welcome to Orange E Card! 🎉</h2>
                     <p class="text-white/90 text-lg">Let's create your digital business card. Fill in your information
                         below.</p>
                 </div>

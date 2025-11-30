@@ -14,7 +14,7 @@
     <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0">
         <div class="mb-6">
             <a href="/">
-                <span class="text-brand-orange text-4xl font-bold">OrangeCard</span>
+                <span class="text-brand-orange text-4xl font-bold">Orange E Card</span>
             </a>
         </div>
 
