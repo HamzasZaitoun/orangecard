@@ -12,7 +12,7 @@
     <div class="max-w-md w-full space-y-8">
         <div>
             <div class="flex justify-center mb-4">
-                <img src="{{ asset('orange.png') }}" alt="Orange Logo" class="w-20 h-20 object-contain">
+                <img src="{{ asset('orange.png') }}" alt="Orange Logo" class="w-24 h-24 object-contain">
             </div>
             <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
                 Login to Edit Your Card

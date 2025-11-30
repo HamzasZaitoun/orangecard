@@ -14,7 +14,7 @@
     <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0">
         <div class="mb-6">
             <a href="/">
-                <img src="{{ asset('orange.png') }}" alt="Orange Logo" class="w-20 h-20 object-contain">
+                <img src="{{ asset('orange.png') }}" alt="Orange Logo" class="w-24 h-24 object-contain">
             </a>
         </div>
 

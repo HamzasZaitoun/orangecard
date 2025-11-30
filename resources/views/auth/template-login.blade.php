@@ -114,7 +114,7 @@
             <!-- Header -->
             <div class="header-section">
                 <div class="logo-container">
-                    <img src="{{ asset('orange.png') }}" alt="Orange Logo" class="w-20 h-20 object-contain">
+                    <img src="{{ asset('orange.png') }}" alt="Orange Logo" class="w-24 h-24 object-contain">
                     <span class="logo-text">is here</span>
                 </div>
                 <img src="{{ asset('elite-plus-logo.png') }}" alt="Elite+" class="elite-logo">
