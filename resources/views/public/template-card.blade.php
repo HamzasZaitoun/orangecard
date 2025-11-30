@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ $user->name }} - Digital Card</title>
+
     <meta name="description" content="Professional contact card with instant sharing">
     <meta property="og:title" content="{{ $user->name }} - Elite+ Contact Card">
     <meta property="og:description" content="Professional contact card with instant sharing">
@@ -13,68 +14,18 @@
     @vite(['resources/css/app.css'])
 
     <style>
-        body {
-            background-color: #000000;
-        }
-
-        /* Mobile Phone Frame */
-        .phone-frame {
-            background: linear-gradient(145deg, #1a1a1a, #0a0a0a);
-            border-radius: 3rem;
-            padding: 1rem;
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8),
-                inset 0 0 0 2px rgba(255, 255, 255, 0.1);
-        }
-
-        .phone-screen {
-            background: #000000;
-            border-radius: 2.5rem;
-            overflow: hidden;
-            position: relative;
-        }
-
-        /* Desktop Laptop Frame */
-        @media (min-width: 1024px) {
-            .laptop-frame {
-                background: linear-gradient(145deg, #2a2a2a, #1a1a1a);
-                border-radius: 1.5rem 1.5rem 0 0;
-                padding: 2rem 3rem 0 3rem;
-                box-shadow: 0 40px 80px rgba(0, 0, 0, 0.9),
-                    inset 0 0 0 3px rgba(255, 255, 255, 0.08);
-                position: relative;
-            }
-
-            .laptop-screen {
-                background: #000000;
-                border-radius: 0.75rem;
-                overflow: hidden;
-                border: 3px solid #1a1a1a;
-            }
-
-            .laptop-base {
-                width: 120%;
-                height: 2rem;
-                background: linear-gradient(145deg, #2a2a2a, #1a1a1a);
-                border-radius: 0 0 1.5rem 1.5rem;
-                margin: 0 -10%;
-                box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
-                position: relative;
-            }
-
-            .laptop-notch {
-                width: 35%;
-                height: 0.5rem;
-                background: #1a1a1a;
-                border-radius: 0 0 0.5rem 0.5rem;
-                position: absolute;
-                top: 0;
-                left: 50%;
-                transform: translateX(-50%);
-            }
-        }
-
-        .card-shadow {
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+        :root {
+            --background: 0 0% 0%;
+            --foreground: 0 0% 100%;
+            --card: 0 0% 97%;
+            --card-foreground: 0 0% 10%;
+            --primary: 30 100% 50%;
+            --primary-foreground: 0 0% 100%;
+            --secondary: 0 0% 20%;
+            --muted: 0 0% 40%;
+            --muted-foreground: 0 0% 70%;
+            --border: 0 0% 85%;
+            --logo-orange: 30 100% 50%;
         }
 
         .card-with-notch {
@@ -82,177 +33,114 @@
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
+
         }
 
-        .profile-ring {
-            box-shadow: 0 0 0 4px #f7f7f7, 0 0 40px rgba(0, 0, 0, 0.9);
+        /* Fallback */
+        .bg-background {
+            background-color: #000 !important;
         }
 
-        .edit-icon-btn {
-            position: absolute;
-            bottom: 20px;
-            left: 20px;
-            z-index: 50;
+        .text-foreground {
+            color: #fff !important;
         }
 
-        @media (min-width: 768px) {
-            .edit-icon-btn {
-                left: 30px;
-            }
+        .text-muted-foreground {
+            color: #b3b3b3 !important;
+        }
+
+        .text-card-foreground {
+            color: #1a1a1a !important;
+        }
+
+        .bg-primary {
+            background-color: #ff8000 !important;
+        }
+
+        .text-primary-foreground {
+            color: #fff !important;
+        }
+
+        .border-border {
+            border-color: #d9d9d9 !important;
+        }
+
+        .border-card {
+            border-color: #f7f7f7 !important;
+        }
+
+        .hover\:bg-primary\/90:hover {
+            background-color: #e67300 !important;
+        }
+
+        .hover\:bg-secondary\/50:hover {
+            background-color: rgba(51, 51, 51, .5) !important;
+        }
+
+        /* Profile image with dark gradient background */
+        .profile-gradient {
+            background: linear-gradient(135deg, #2d3748 0%, #1a202c 50%, #000000 100%);
         }
     </style>
 </head>
 
-<body class="min-h-screen flex items-center justify-center p-4">
+<body class="bg-background text-foreground min-h-screen flex items-center justify-center p-4">
 
-    <!-- Mobile View: Phone Frame (visible on mobile only) -->
-    <div class="lg:hidden phone-frame w-full max-w-sm">
-        <div class="phone-screen">
-            <div class="p-6 pt-12 pb-16 min-h-screen relative">
-                <!-- Orange Logo (Top Left) -->
-                <div class="absolute top-6 left-6 z-10">
-                    <img src="{{ asset('orange.png') }}" alt="Orange Logo" class="w-12 h-12 object-contain">
-                </div>
+    <div class="w-full max-w-sm">
 
-                <!-- Elite+ Badge (Top Right) -->
-                <div class="absolute top-6 right-6 z-10">
-                    <span class="text-gray-400 text-sm font-light">Elite+</span>
-                </div>
-
-                <!-- Card with Background Image -->
-                <div class="card-with-notch rounded-3xl card-shadow p-8 mt-24 mb-6 relative">
-                    <!-- Profile Image -->
-                    <div class="flex justify-center -mt-24 mb-6">
-                        <div class="w-32 h-32 rounded-full overflow-hidden profile-ring">
-                            <img src="{{ asset('profile-placeholder.jpg') }}"
-                                alt="{{ $user->name }}"
-                                class="w-full h-full object-cover"
-                                onerror="this.parentElement.innerHTML='<div class=\'w-full h-full bg-gradient-to-br from-gray-700 via-gray-800 to-gray-900 flex items-center justify-center\'><span class=\'text-white text-5xl font-bold\'>{{ substr($user->name, 0, 1) }}</span></div>'">
-                        </div>
-                    </div>
-
-                    <!-- Contact Info -->
-                    <h1 class="text-2xl font-bold text-black text-center mb-2">
-                        {{ $user->name }}
-                    </h1>
-
-                    <p class="text-gray-500 text-center text-base mb-6">
-                        Professional
-                    </p>
-
-                    <div class="border-t border-gray-300 my-6"></div>
-
-                    <div class="text-center mb-6">
-                        <p class="text-gray-800 text-lg font-medium">
-                            Phone Number
-                        </p>
-                    </div>
-
-                    <div class="border-t border-gray-300 my-6"></div>
-
-                    <div class="text-center">
-                        <p class="text-gray-800 text-base">
-                            {{ $user->email }}
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Add Contact Button -->
-                <button disabled
-                    class="block w-full bg-gray-400 text-white font-bold py-4 rounded-3xl shadow-xl text-center text-lg cursor-not-allowed opacity-70 mb-20">
-                    Add Contact
-                </button>
-
-                <!-- Edit Icon Button -->
-                <a href="{{ route('card.template.login', $user->id) }}"
-                    class="edit-icon-btn bg-white p-3 rounded-2xl shadow-2xl hover:scale-110 transition-transform">
-                    <svg class="w-6 h-6 text-black" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z" />
-                        <path fill-rule="evenodd" d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" clip-rule="evenodd" />
-                    </svg>
-                </a>
-            </div>
+        <!-- Header -->
+        <div class="flex items-start justify-between mb-8">
+            <img src="{{ asset('orange.png') }}" alt="Orange Logo" class="w-12 h-12 object-contain">
+            <div class="text-muted-foreground text-sm font-light">Elite+</div>
         </div>
-    </div>
 
-    <!-- Desktop View: Laptop Frame (visible on desktop only) -->
-    <div class="hidden lg:block w-full max-w-6xl">
-        <div class="laptop-frame">
-            <div class="laptop-screen" style="height: 600px;">
-                <div class="h-full overflow-y-auto p-12 flex items-center justify-center">
-                    <div class="w-full max-w-2xl relative">
-                        <!-- Orange Logo (Top Left) -->
-                        <div class="absolute top-0 left-0 z-10">
-                            <img src="{{ asset('orange.png') }}" alt="Orange Logo" class="w-20 h-20 object-contain">
-                        </div>
+        <!-- Contact Card -->
+        <div class="card-with-notch rounded-3xl p-8 shadow-2xl relative" style="margin-top: 5rem;">
 
-                        <!-- Elite+ Badge (Top Right) -->
-                        <div class="absolute top-4 right-12 z-10">
-                            <span class="text-gray-400 text-xl font-light">Elite+</span>
-                        </div>
+            <!-- Profile Image (Using gradient circle with initial) -->
+            <div class="flex justify-center -mt-20 mb-12" style="margin-top:-7rem">
+                <div class="w-32 h-32 rounded-full overflow-hidden border-4 border-card shadow-lg profile-gradient flex items-center justify-center">
+                    <span class="text-white text-5xl font-bold">
+                        {{ substr($user->name, 0, 1) }}
+                    </span>
+                </div>
+            </div>
 
-                        <!-- Main Card -->
-                        <div class="relative pt-20">
-                            <div class="card-with-notch rounded-[2.5rem] card-shadow pt-32 pb-20 px-16 relative">
-                                <!-- Profile Image -->
-                                <div class="absolute -top-28 left-1/2 transform -translate-x-1/2 z-20">
-                                    <div class="w-52 h-52 rounded-full overflow-hidden profile-ring">
-                                        <img src="{{ asset('profile-placeholder.jpg') }}"
-                                            alt="{{ $user->name }}"
-                                            class="w-full h-full object-cover"
-                                            onerror="this.parentElement.innerHTML='<div class=\'w-full h-full bg-gradient-to-br from-gray-700 via-gray-800 to-gray-900 flex items-center justify-center\'><span class=\'text-white text-7xl font-bold\'>{{ substr($user->name, 0, 1) }}</span></div>'">
-                                    </div>
-                                </div>
+            <!-- Contact Info -->
+            <div class="text-center space-y-4">
+                <h1 class="text-2xl font-bold text-card-foreground">full name</h1>
+                <p class="text-muted-foreground text-sm">job title</p>
 
-                                <h1 class="text-5xl font-bold text-black text-center mb-4">
-                                    {{ $user->name }}
-                                </h1>
-
-                                <p class="text-gray-500 text-center text-2xl mb-12">
-                                    Professional
-                                </p>
-
-                                <div class="border-t border-gray-300 mb-12"></div>
-
-                                <div class="text-center mb-12">
-                                    <p class="text-gray-800 text-2xl font-medium">
-                                        Phone Number
-                                    </p>
-                                </div>
-                                <div class="border-t border-gray-300 mb-12"></div>
-
-                                <div class="text-center">
-                                    <p class="text-gray-800 text-xl">
-                                        {{ $user->email }}
-                                    </p>
-                                </div>
-                            </div>
-
-                            <!-- Add Contact Button -->
-                            <div class="mt-12 px-4 relative pb-20">
-                                <button disabled
-                                    class="block w-full bg-gray-400 text-white font-bold py-7 rounded-3xl shadow-xl text-center text-2xl cursor-not-allowed opacity-70">
-                                    Add Contact
-                                </button>
-
-                                <!-- Edit Icon Button -->
-                                <a href="{{ route('card.template.login', $user->id) }}"
-                                    class="absolute bottom-5 left-8 bg-white p-5 rounded-2xl shadow-2xl hover:scale-110 transition-transform duration-300">
-                                    <svg class="w-8 h-8 text-black" fill="currentColor" viewBox="0 0 20 20">
-                                        <path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z" />
-                                        <path fill-rule="evenodd" d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" clip-rule="evenodd" />
-                                    </svg>
-                                </a>
-                            </div>
-                        </div>
+                <div class="space-y-3 pt-2">
+                    <div class="border-t border-border pt-3">
+                        <p class="text-card-foreground font-medium">Phone Number</p>
+                    </div>
+                    <div class="border-t border-border pt-3">
+                        <p class="text-card-foreground font-medium">user@example.com</p>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- Laptop Base -->
-        <div class="laptop-base">
-            <div class="laptop-notch"></div>
+
+        <!-- Add Contact (Disabled for template) -->
+        <div class="mt-8 flex items-center gap-4">
+            <button disabled
+                class="flex-1 bg-gray-400 text-white rounded-xl h-14 text-base font-semibold shadow-lg cursor-not-allowed opacity-70">
+                Add Contact
+            </button>
         </div>
+
+        <!-- Edit Button -->
+        <div class="mt-8">
+            <a href="{{ route('card.template.login', $user->id) }}"
+                class="inline-flex h-12 w-12 rounded-xl hover:bg-secondary/50 items-center justify-center transition-all">
+                <svg class="h-5 w-5 text-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                </svg>
+            </a>
+        </div>
+
     </div>
 
 </body>

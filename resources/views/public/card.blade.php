@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ $card->full_name }} - Digital Card</title>
+
     <meta name="description" content="Professional contact card with instant sharing">
     <meta property="og:title" content="{{ $card->full_name }} - Elite+ Contact Card">
     <meta property="og:description" content="Professional contact card with instant sharing">
@@ -34,13 +35,13 @@
             background-repeat: no-repeat;
         }
 
-        /* Fallback colors if Tailwind isn't loading */
+        /* Fallback */
         .bg-background {
-            background-color: #000000 !important;
+            background-color: #000 !important;
         }
 
         .text-foreground {
-            color: #ffffff !important;
+            color: #fff !important;
         }
 
         .text-muted-foreground {
@@ -56,7 +57,7 @@
         }
 
         .text-primary-foreground {
-            color: #ffffff !important;
+            color: #fff !important;
         }
 
         .border-border {
@@ -72,7 +73,7 @@
         }
 
         .hover\:bg-secondary\/50:hover {
-            background-color: rgba(51, 51, 51, 0.5) !important;
+            background-color: rgba(51, 51, 51, .5) !important;
         }
     </style>
 </head>
@@ -83,9 +84,7 @@
 
         <!-- Header -->
         <div class="flex items-start justify-between mb-8">
-            <div class="flex items-center gap-2">
-                <img src="{{ asset('orange.png') }}" alt="Orange Logo" class="w-12 h-12 object-contain">
-            </div>
+            <img src="{{ asset('orange.png') }}" alt="Orange Logo" class="w-12 h-12 object-contain">
             <div class="text-muted-foreground text-sm font-light">Elite+</div>
         </div>
 
@@ -103,9 +102,7 @@
 
             <!-- Contact Info -->
             <div class="text-center space-y-4">
-                <h1 class="text-2xl font-bold text-card-foreground">
-                    {{ $card->full_name }}
-                </h1>
+                <h1 class="text-2xl font-bold text-card-foreground">{{ $card->full_name }}</h1>
                 <p class="text-muted-foreground text-sm">{{ $card->job_title }}</p>
 
                 <div class="space-y-3 pt-2">
@@ -117,50 +114,33 @@
                     </div>
                 </div>
             </div>
-
         </div>
 
-        <!-- Action Buttons -->
+        <!-- Add Contact -->
         <div class="mt-8 flex items-center gap-4">
             <a href="{{ route('card.vcard', $card->public_slug) }}" class="flex-1">
-                <button class="w-full bg-primary hover:bg-primary/90 text-primary-foreground rounded-xl h-14 text-base font-semibold shadow-lg transition-all">
+                <button
+                    class="w-full bg-primary hover:bg-primary/90 text-primary-foreground rounded-xl h-14 text-base font-semibold shadow-lg transition-all">
                     Add Contact
                 </button>
             </a>
         </div>
 
-        <!-- Edit Button - Bottom Left -->
+        <!-- Edit Button -->
         <div class="mt-8">
-            @auth
-            @if(auth()->id() === $card->user_id)
-            <a href="{{ route('dashboard.edit') }}"
+            @php
+            $editRoute = auth()->check() && auth()->id() === $card->user_id
+            ? route('dashboard.edit')
+            : route('card.edit.login.form', $card->public_slug);
+            @endphp
+
+            <a href="{{ $editRoute }}"
                 class="inline-flex h-12 w-12 rounded-xl hover:bg-secondary/50 items-center justify-center transition-all">
                 <svg class="h-5 w-5 text-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z">
-                    </path>
+                        d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
                 </svg>
             </a>
-            @else
-            <a href="{{ route('card.edit.login.form', $card->public_slug) }}"
-                class="inline-flex h-12 w-12 rounded-xl hover:bg-secondary/50 items-center justify-center transition-all">
-                <svg class="h-5 w-5 text-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z">
-                    </path>
-                </svg>
-            </a>
-            @endif
-            @else
-            <a href="{{ route('card.edit.login.form', $card->public_slug) }}"
-                class="inline-flex h-12 w-12 rounded-xl hover:bg-secondary/50 items-center justify-center transition-all">
-                <svg class="h-5 w-5 text-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z">
-                    </path>
-                </svg>
-            </a>
-            @endauth
         </div>
 
     </div>

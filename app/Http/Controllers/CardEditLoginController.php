@@ -11,6 +11,7 @@ class CardEditLoginController extends Controller
     public function showLoginForm($slug)
     {
         $card = DigitalCard::where('public_slug', $slug)->firstOrFail();
+        dd($slug);
         return view('auth.card-edit-login', compact('card'));
     }
 
