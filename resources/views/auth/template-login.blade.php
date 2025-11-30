@@ -42,8 +42,8 @@
 
         .logo-box {
             background-color: #ff8000;
-            width: 60px;
-            height: 60px;
+            width: 80px;
+            height: 80px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -57,10 +57,9 @@
             font-weight: 600;
         }
 
-        .elite-badge {
-            color: #666;
-            font-size: 1.25rem;
-            font-weight: 300;
+        .elite-logo {
+            width: 80px;
+            height: auto;
         }
 
         .form-group {
@@ -126,11 +125,12 @@
             <div class="header-section">
                 <div class="logo-container">
                     <div class="logo-box">
-                        <img src="{{ asset('orange.png') }}" alt="Orange" style="width: 40px; height: 40px; object-fit: contain;">
+                        <img src="{{ asset('orange.png') }}" alt="Orange"
+                            style="width: 55px; height: 55px; object-fit: contain;">
                     </div>
                     <span class="logo-text">is here</span>
                 </div>
-                <div class="elite-badge">Elite+</div>
+                <img src="{{ asset('elite-plus-logo.png') }}" alt="Elite+" class="elite-logo">
             </div>
 
             <!-- Login Form -->
@@ -140,29 +140,19 @@
                 <!-- Username (prefilled, readonly) -->
                 <div class="form-group">
                     <label class="form-label">User Name</label>
-                    <input
-                        type="text"
-                        value="{{ $user->username }}"
-                        readonly
-                        class="form-input"
+                    <input type="text" value="{{ $user->username }}" readonly class="form-input"
                         style="cursor: not-allowed; opacity: 0.8;">
                 </div>
 
                 <!-- Password -->
                 <div class="form-group">
                     <label class="form-label">Password</label>
-                    <input
-                        type="password"
-                        name="password"
-                        required
-                        autofocus
-                        class="form-input"
-                        placeholder="">
+                    <input type="password" name="password" required autofocus class="form-input" placeholder="">
                     @error('password')
-                    <p style="margin-top: 0.5rem; font-size: 0.75rem; color: #ef4444;">{{ $message }}</p>
+                        <p style="margin-top: 0.5rem; font-size: 0.75rem; color: #ef4444;">{{ $message }}</p>
                     @enderror
                     @error('email')
-                    <p style="margin-top: 0.5rem; font-size: 0.75rem; color: #ef4444;">{{ $message }}</p>
+                        <p style="margin-top: 0.5rem; font-size: 0.75rem; color: #ef4444;">{{ $message }}</p>
                     @enderror
                 </div>
 

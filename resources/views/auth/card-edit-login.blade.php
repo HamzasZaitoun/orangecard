@@ -11,6 +11,9 @@
 <body class="bg-gray-50 min-h-screen flex items-center justify-center">
     <div class="max-w-md w-full space-y-8">
         <div>
+            <div class="flex justify-center mb-4">
+                <img src="{{ asset('orange.png') }}" alt="Orange Logo" class="w-20 h-20 object-contain">
+            </div>
             <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
                 Login to Edit Your Card
             </h2>
@@ -28,7 +31,7 @@
                     class="relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-brand-orange focus:border-brand-orange"
                     placeholder="Username" value="{{ old('username') }}">
                 @error('username')
-                <span class="text-red-500 text-sm">{{ $message }}</span>
+                    <span class="text-red-500 text-sm">{{ $message }}</span>
                 @enderror
             </div>
 
@@ -38,7 +41,7 @@
                     class="relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-brand-orange focus:border-brand-orange"
                     placeholder="Password">
                 @error('password')
-                <span class="text-red-500 text-sm">{{ $message }}</span>
+                    <span class="text-red-500 text-sm">{{ $message }}</span>
                 @enderror
             </div>
 

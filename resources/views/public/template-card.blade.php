@@ -90,7 +90,7 @@
         <!-- Header -->
         <div class="flex items-start justify-between mb-12">
             <img src="{{ asset('orange.png') }}" alt="Orange Logo" class="w-20 h-20 object-contain">
-            <div class="text-muted-foreground text-sm font-light">Elite+</div>
+            <img src="{{ asset('elite-plus-logo.png') }}" alt="Elite+" class="w-20 h-auto">
         </div>
 
         <!-- Contact Card -->

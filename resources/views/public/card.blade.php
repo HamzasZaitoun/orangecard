@@ -84,8 +84,8 @@
 
         <!-- Header -->
         <div class="flex items-start justify-between mb-8">
-            <img src="{{ asset('orange.png') }}" alt="Orange Logo" class="w-12 h-12 object-contain">
-            <div class="text-muted-foreground text-sm font-light">Elite+</div>
+            <img src="{{ asset('orange.png') }}" alt="Orange Logo" class="w-16 h-16 object-contain">
+            <img src="{{ asset('elite-plus-logo.png') }}" alt="Elite+" class="w-20 h-auto">
         </div>
 
         <!-- Contact Card -->
@@ -94,8 +94,7 @@
             <!-- Profile Image -->
             <div class="flex justify-center -mt-20 mb-12" style="margin-top:-7rem">
                 <div class="w-32 h-32 rounded-full overflow-hidden border-4 border-card shadow-lg">
-                    <img src="{{ asset($card->profile_img_url) }}"
-                        alt="{{ $card->full_name }}"
+                    <img src="{{ asset($card->profile_img_url) }}" alt="{{ $card->full_name }}"
                         class="w-full h-full object-cover">
                 </div>
             </div>
@@ -129,9 +128,9 @@
         <!-- Edit Button -->
         <div class="mt-8">
             @php
-            $editRoute = auth()->check() && auth()->id() === $card->user_id
-            ? route('dashboard.edit')
-            : route('card.edit.login.form', $card->public_slug);
+                $editRoute = auth()->check() && auth()->id() === $card->user_id
+                    ? route('dashboard.edit')
+                    : route('card.edit.login.form', $card->public_slug);
             @endphp
 
             <a href="{{ $editRoute }}"
