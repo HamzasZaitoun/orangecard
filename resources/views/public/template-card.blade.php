@@ -88,7 +88,7 @@
     <div class="w-full max-w-sm">
 
         <!-- Header -->
-        <div class="flex items-start justify-between mb-12">
+        <div class="flex items-center justify-between mb-12">
             <img src="{{ asset('orange.png') }}" alt="Orange Logo" class="w-24 h-24 object-contain">
             <img src="{{ asset('elite-plus-logo.png') }}" alt="Elite+" class="w-20 h-auto">
         </div>

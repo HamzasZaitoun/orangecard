@@ -29,7 +29,7 @@
                 <label for="username" class="sr-only">Username</label>
                 <input id="username" name="username" type="text" required
                     class="relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-brand-orange focus:border-brand-orange"
-                    placeholder="Username" value="{{ old('username') }}">
+                    placeholder="Username" value="{{ old('username', $card->user->username) }}">
                 @error('username')
                     <span class="text-red-500 text-sm">{{ $message }}</span>
                 @enderror
