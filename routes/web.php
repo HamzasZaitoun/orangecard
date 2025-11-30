@@ -13,11 +13,7 @@ Route::get('/', function () {
 
 // Public Digital Card View - Full Screen with Name in URL
 Route::get('/card/{slug}', [PublicCardController::class, 'show'])->name('card.public');
-// Template Card Routes (for users without digital cards)
-Route::get('card/{username}/{userId}', [TemplateCardController::class, 'show'])
-    ->name('card.template');
-Route::get('/template/{userId}/login', [TemplateCardController::class, 'showLoginForm'])->name('card.template.login');
-Route::post('/template/{userId}/login', [TemplateCardController::class, 'login'])->name('card.template.login.post');
+
 // Card Edit Login Routes
 Route::get('/card/{slug}/edit-login', [CardEditLoginController::class, 'showLoginForm'])->name('card.edit.login.form');
 Route::post('/card/{slug}/edit-login', [CardEditLoginController::class, 'login'])->name('card.edit.login');
@@ -25,8 +21,15 @@ Route::post('/card/{slug}/edit-login', [CardEditLoginController::class, 'login']
 // Download VCard
 Route::get('/card/{slug}/vcard', [VCardController::class, 'download'])->name('card.vcard');
 
-// Exchange Contacts (Add to Contact with visitor info)
-Route::post('/card/{slug}/add-contact', [PublicCardController::class, 'addContact'])->name('card.add-contact');
+// Exchange Contacts (Add to Contact with visitor info) - REMOVED CSRF middleware to fix "page expired"
+Route::post('/card/{slug}/add-contact', [PublicCardController::class, 'addContact'])
+    ->name('card.add-contact');
+
+// Template Card Routes (for users without digital cards)
+Route::get('card/{username}/{userId}', [TemplateCardController::class, 'show'])
+    ->name('card.template');
+Route::get('/template/{userId}/login', [TemplateCardController::class, 'showLoginForm'])->name('card.template.login');
+Route::post('/template/{userId}/login', [TemplateCardController::class, 'login'])->name('card.template.login.post');
 
 // Authentication Routes (Laravel Breeze)
 require __DIR__ . '/auth.php';

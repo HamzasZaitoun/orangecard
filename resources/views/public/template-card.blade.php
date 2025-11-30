@@ -4,10 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ $user->name }} - Digital Card</title>
+    <title>Digital Card</title>
 
     <meta name="description" content="Professional contact card with instant sharing">
-    <meta property="og:title" content="{{ $user->name }} - Elite+ Contact Card">
+    <meta property="og:title" content="Elite+ Contact Card">
     <meta property="og:description" content="Professional contact card with instant sharing">
     <meta property="og:type" content="website">
 
@@ -33,7 +33,6 @@
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-
         }
 
         /* Fallback */
@@ -89,43 +88,44 @@
     <div class="w-full max-w-sm">
 
         <!-- Header -->
-        <div class="flex items-start justify-between mb-8">
-            <img src="{{ asset('orange.png') }}" alt="Orange Logo" class="w-12 h-12 object-contain">
+        <div class="flex items-start justify-between mb-12">
+            <img src="{{ asset('orange.png') }}" alt="Orange Logo" class="w-20 h-20 object-contain">
             <div class="text-muted-foreground text-sm font-light">Elite+</div>
         </div>
 
         <!-- Contact Card -->
-        <div class="card-with-notch rounded-3xl p-8 shadow-2xl relative" style="margin-top: 5rem;">
+        <div class="card-with-notch rounded-3xl p-8 shadow-2xl relative" style="margin-top: 7rem;">
 
             <!-- Profile Image (Using gradient circle with initial) -->
             <div class="flex justify-center -mt-20 mb-12" style="margin-top:-7rem">
-                <div class="w-32 h-32 rounded-full overflow-hidden border-4 border-card shadow-lg profile-gradient flex items-center justify-center">
+                <div
+                    class="w-32 h-32 rounded-full overflow-hidden border-4 border-card shadow-lg profile-gradient flex items-center justify-center">
                     <span class="text-white text-5xl font-bold">
-                        {{ substr($user->name, 0, 1) }}
+                        F
                     </span>
                 </div>
             </div>
 
             <!-- Contact Info -->
             <div class="text-center space-y-4">
-                <h1 class="text-2xl font-bold text-card-foreground">full name</h1>
-                <p class="text-muted-foreground text-sm">job title</p>
+                <h1 class="text-2xl font-bold text-card-foreground">Full Name</h1>
+                <p class="text-muted-foreground text-sm">Job Title</p>
 
                 <div class="space-y-3 pt-2">
                     <div class="border-t border-border pt-3">
                         <p class="text-card-foreground font-medium">Phone Number</p>
                     </div>
                     <div class="border-t border-border pt-3">
-                        <p class="text-card-foreground font-medium">user@example.com</p>
+                        <p class="text-card-foreground font-medium">email@example.com</p>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Add Contact (Disabled for template) -->
+        <!-- Add Contact (Disabled) -->
         <div class="mt-8 flex items-center gap-4">
             <button disabled
-                class="flex-1 bg-gray-400 text-white rounded-xl h-14 text-base font-semibold shadow-lg cursor-not-allowed opacity-70">
+                class="w-full bg-gray-400 text-white rounded-xl h-14 text-base font-semibold shadow-lg cursor-not-allowed opacity-70">
                 Add Contact
             </button>
         </div>
