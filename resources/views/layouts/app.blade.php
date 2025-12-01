@@ -34,7 +34,7 @@
                     @endif
 
                     @if(auth()->user()->isStandard())
-                        <a href="{{ route('dashboard.edit', ['username' => auth()->user()->username]) }}"
+                        <a href="{{ route('dashboard.edit', ['username' => auth()->user()->username, 'userId' => auth()->id()]) }}"
                             class="text-brand-orange hover:text-white transition">My Card</a>
                     @endif
 

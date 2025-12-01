@@ -7,12 +7,12 @@ use Illuminate\Support\Facades\Storage;
 
 class CardEditorController extends Controller
 {
-    public function edit($username)
+    public function edit($username, $userId)
     {
         $user = auth()->user();
 
-        // Verify the username matches the authenticated user
-        if ($user->username !== $username) {
+        // Verify the username and userId match the authenticated user
+        if ($user->username !== $username || $user->id != $userId) {
             abort(403, 'Unauthorized access');
         }
 
@@ -66,6 +66,6 @@ class CardEditorController extends Controller
 
         $card->save();
 
-        return redirect()->route('dashboard.edit', ['username' => $user->username])->with('message', 'Card updated successfully!');
+        return redirect()->route('dashboard.edit', ['username' => $user->username, 'userId' => $user->id])->with('message', 'Card updated successfully!');
     }
 }

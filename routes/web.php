@@ -34,7 +34,7 @@ require __DIR__ . '/auth.php';
 
 // Standard User Routes
 Route::middleware(['auth', 'role:standard'])->group(function () {
-    Route::get('/dashboard/edit/{username}', [App\Http\Controllers\CardEditorController::class, 'edit'])->name('dashboard.edit');
+    Route::get('/dashboard/edit/{username}/{userId}', [App\Http\Controllers\CardEditorController::class, 'edit'])->name('dashboard.edit');
     Route::post('/dashboard/update', [App\Http\Controllers\CardEditorController::class, 'update'])->name('dashboard.update');
 });
 
@@ -61,5 +61,5 @@ Route::middleware('auth')->get('/dashboard', function () {
         return redirect()->route('admin.users');
     }
 
-    return redirect()->route('dashboard.edit', ['username' => $user->username]);
+    return redirect()->route('dashboard.edit', ['username' => $user->username, 'userId' => $user->id]);
 })->name('dashboard');
