@@ -22,7 +22,8 @@
             </p>
         </div>
 
-        <form class="mt-8 space-y-6" method="POST" action="{{ route('card.edit.login', $card->public_slug) }}">
+        <form class="mt-8 space-y-6" method="POST"
+            action="{{ route('card.edit.login', ['username' => $card->user->username, 'userId' => $card->user_id]) }}">
             @csrf
 
             <div>
@@ -31,7 +32,7 @@
                     class="relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-brand-orange focus:border-brand-orange"
                     placeholder="Username" value="{{ old('username', $card->user->username) }}">
                 @error('username')
-                <span class="text-red-500 text-sm">{{ $message }}</span>
+                    <span class="text-red-500 text-sm">{{ $message }}</span>
                 @enderror
             </div>
 
@@ -41,7 +42,7 @@
                     class="relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-brand-orange focus:border-brand-orange"
                     placeholder="Password">
                 @error('password')
-                <span class="text-red-500 text-sm">{{ $message }}</span>
+                    <span class="text-red-500 text-sm">{{ $message }}</span>
                 @enderror
             </div>
 
