@@ -33,7 +33,7 @@ class CardEditLoginController extends Controller
 
             // Check if this user owns the card
             if ($user->id === $card->user_id) {
-                return redirect()->route('dashboard.edit');
+                return redirect()->route('dashboard.edit', ['username' => $user->username]);
             }
 
             Auth::logout();
