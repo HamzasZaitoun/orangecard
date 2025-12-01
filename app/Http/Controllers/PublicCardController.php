@@ -7,11 +7,16 @@ use Illuminate\Http\Request;
 
 class PublicCardController extends Controller
 {
-    public function show($slug)
+    public function show($username, $userId)
     {
-        $card = DigitalCard::where('public_slug', $slug)
+        $card = DigitalCard::where('user_id', $userId)
             ->with('user')
             ->firstOrFail();
+
+        // Verify username matches for security
+        if ($card->user->username !== $username) {
+            abort(404);
+        }
 
         // Check if user exists and is active
         if (!$card->user || !$card->user->is_active) {

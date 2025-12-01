@@ -48,11 +48,11 @@ class UserList extends Component
             ]);
 
             // Use the created digital card directly
-            return redirect()->route('card.public', $digitalCard->public_slug);
+            return redirect()->route('card.public', ['username' => $user->username, 'userId' => $user->id]);
         }
 
         // If card already exists, redirect to it
-        return redirect()->route('card.public', $user->digitalCard->public_slug);
+        return redirect()->route('card.public', ['username' => $user->username, 'userId' => $user->id]);
     }
 
     public function openPasswordModal($userId)

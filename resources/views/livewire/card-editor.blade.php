@@ -20,7 +20,8 @@
 
         @if($first_name && $last_name)
             <div class="mb-6 flex justify-center">
-                <a href="{{ url('/card') }}/{{ auth()->user()->username }}" target="_blank"
+                <a href="{{ route('card.public', ['username' => auth()->user()->username, 'userId' => auth()->id()]) }}"
+                    target="_blank"
                     class="inline-flex items-center space-x-2 bg-gradient-to-r from-brand-orange to-red-500 text-white px-6 py-3 rounded-xl font-semibold hover:shadow-xl hover:scale-105 transition-all duration-200">
                     <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                         <path

@@ -35,8 +35,8 @@
                             <td class="px-6 py-4">{{ $user->username }}</td>
                             <td class="px-6 py-4">
                                 @if($user->digitalCard)
-                                    <a href="{{ route('card.public', $user->username) }}" target="_blank"
-                                        class="text-green-600 hover:underline font-semibold">
+                                    <a href="{{ route('card.public', ['username' => $user->username, 'userId' => $user->id]) }}"
+                                        target="_blank" class="text-green-600 hover:underline font-semibold">
                                         View Card
                                     </a>
                                 @else
