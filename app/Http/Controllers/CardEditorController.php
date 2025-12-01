@@ -7,9 +7,15 @@ use Illuminate\Support\Facades\Storage;
 
 class CardEditorController extends Controller
 {
-    public function edit()
+    public function edit($username)
     {
         $user = auth()->user();
+
+        // Verify the username matches the authenticated user
+        if ($user->username !== $username) {
+            abort(403, 'Unauthorized access');
+        }
+
         $card = $user->digitalCard;
 
         return view('livewire.card-editor', [
@@ -60,6 +66,6 @@ class CardEditorController extends Controller
 
         $card->save();
 
-        return redirect()->route('dashboard.edit')->with('message', 'Card updated successfully!');
+        return redirect()->route('dashboard.edit', ['username' => $user->username])->with('message', 'Card updated successfully!');
     }
 }

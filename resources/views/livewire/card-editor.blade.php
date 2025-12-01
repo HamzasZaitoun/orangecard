@@ -18,41 +18,6 @@
             </div>
         @endif
 
-        <!-- Card URL Section -->
-        @if($first_name && $last_name)
-            <div class="mb-6 bg-gradient-to-r from-blue-500 to-blue-600 rounded-2xl p-6 text-white shadow-xl">
-                <div class="flex items-center justify-between flex-wrap gap-4">
-                    <div class="flex-1 min-w-0">
-                        <p class="text-sm text-white/80 mb-1">Your Public Card URL</p>
-                        <p class="text-lg font-semibold break-all" id="cardUrl">
-                            {{ url('/card') }}/{{ auth()->user()->username  }}
-                        </p>
-                    </div>
-                    <div class="flex space-x-2 flex-shrink-0">
-                        <button onclick="copyCardUrl()"
-                            class="bg-white text-blue-600 px-4 py-2 rounded-lg font-semibold hover:bg-blue-50 transition flex items-center space-x-2">
-                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                                <path d="M8 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z" />
-                                <path
-                                    d="M6 3a2 2 0 00-2 2v11a2 2 0 002 2h8a2 2 0 002-2V5a2 2 0 00-2-2 3 3 0 01-3 3H9a3 3 0 01-3-3z" />
-                            </svg>
-                            <span id="copyBtnText">Copy</span>
-                        </button>
-                        <a href="{{ url('/card') }}/{{ auth()->user()->username  }}" target="_blank"
-                            class="bg-brand-orange text-white px-4 py-2 rounded-lg font-semibold hover:bg-opacity-90 transition flex items-center space-x-2">
-                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                                <path
-                                    d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z" />
-                                <path
-                                    d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z" />
-                            </svg>
-                            <span>Go to Card</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        @endif
-
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
             <!-- Left Column: Form -->
             <div class="lg:col-span-2">
@@ -269,27 +234,6 @@
     </div>
 
     <script>
-        function copyCardUrl() {
-            const url = document.getElementById('cardUrl').textContent.trim();
-            const btn = document.getElementById('copyBtnText');
-
-            navigator.clipboard.writeText(url).then(() => {
-                btn.textContent = 'Copied!';
-                btn.parentElement.classList.add('bg-green-500');
-                btn.parentElement.classList.remove('bg-white', 'text-blue-600');
-                btn.parentElement.classList.add('text-white');
-
-                setTimeout(() => {
-                    btn.textContent = 'Copy';
-                    btn.parentElement.classList.remove('bg-green-500', 'text-white');
-                    btn.parentElement.classList.add('bg-white', 'text-blue-600');
-                }, 2000);
-            }).catch(err => {
-                console.error('Failed to copy:', err);
-                alert('Failed to copy URL');
-            });
-        }
-
         function previewImage(event) {
             const file = event.target.files[0];
             if (file) {

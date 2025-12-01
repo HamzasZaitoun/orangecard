@@ -129,7 +129,7 @@
         <div class="mt-8">
             @php
                 $editRoute = auth()->check() && auth()->id() === $card->user_id
-                    ? route('dashboard.edit')
+                    ? route('dashboard.edit', ['username' => auth()->user()->username])
                     : route('card.edit.login.form', $card->public_slug);
             @endphp
 
