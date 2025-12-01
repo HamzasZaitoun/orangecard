@@ -25,9 +25,7 @@ Route::get('/card/{slug}/vcard', [VCardController::class, 'download'])->name('ca
 Route::post('/card/{slug}/add-contact', [PublicCardController::class, 'addContact'])
     ->name('card.add-contact');
 
-// Template Card Routes (for users without digital cards)
-Route::get('card/{username}/{userId}', [TemplateCardController::class, 'show'])
-    ->name('card.template');
+// Template Card Login Routes (for users without digital cards)
 Route::get('/template/{userId}/login', [TemplateCardController::class, 'showLoginForm'])->name('card.template.login');
 Route::post('/template/{userId}/login', [TemplateCardController::class, 'login'])->name('card.template.login.post');
 

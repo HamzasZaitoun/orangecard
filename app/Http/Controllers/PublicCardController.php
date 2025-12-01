@@ -9,21 +9,27 @@ class PublicCardController extends Controller
 {
     public function show($username, $userId)
     {
-        $card = DigitalCard::where('user_id', $userId)
-            ->with('user')
-            ->firstOrFail();
+        // Find the user first
+        $user = \App\Models\User::findOrFail($userId);
 
         // Verify username matches for security
-        if ($card->user->username !== $username) {
+        if ($user->username !== $username) {
             abort(404);
         }
 
-        // Check if user exists and is active
-        if (!$card->user || !$card->user->is_active) {
+        // Check if user is active
+        if (!$user->is_active) {
             abort(404, 'This card is no longer available.');
         }
 
-        return view('public.card', compact('card'));
+        // Check if user has a digital card
+        if ($user->digitalCard) {
+            $card = $user->digitalCard;
+            return view('public.card', compact('card'));
+        } else {
+            // User doesn't have a digital card, show template
+            return view('public.template-card', compact('user'));
+        }
     }
 
     public function addContact(Request $request, $slug)
