@@ -56,7 +56,7 @@ class TemplateCardController extends Controller
             $request->session()->regenerate();
 
             // Redirect to dashboard edit page
-            return redirect()->route('dashboard.edit');
+            return redirect()->route('dashboard.edit', ['username' => Auth::user()->username]);
         }
 
         return back()->withErrors([
