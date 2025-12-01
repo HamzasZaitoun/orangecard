@@ -117,7 +117,8 @@
 
         <!-- Add Contact -->
         <div class="mt-8 flex items-center gap-4">
-            <a href="{{ route('card.vcard', $card->public_slug) }}" class="flex-1">
+            <a href="{{ route('card.vcard', ['username' => $card->user->username, 'userId' => $card->user_id]) }}"
+                class="flex-1">
                 <button
                     class="w-full bg-primary hover:bg-primary/90 text-primary-foreground rounded-xl h-14 text-base font-semibold shadow-lg transition-all">
                     Add Contact
@@ -130,7 +131,7 @@
             @php
                 $editRoute = auth()->check() && auth()->id() === $card->user_id
                     ? route('dashboard.edit', ['username' => auth()->user()->username, 'userId' => auth()->id()])
-                    : route('card.edit.login.form', $card->public_slug);
+                    : route('card.edit.login.form', ['username' => $card->user->username, 'userId' => $card->user_id]);
             @endphp
 
             <a href="{{ $editRoute }}"

@@ -15,11 +15,11 @@ Route::get('/', function () {
 Route::get('/card/{username}/{userId}', [PublicCardController::class, 'show'])->name('card.public');
 
 // Card Edit Login Routes
-Route::get('/card/{slug}/edit-login', [CardEditLoginController::class, 'showLoginForm'])->name('card.edit.login.form');
-Route::post('/card/{slug}/edit-login', [CardEditLoginController::class, 'login'])->name('card.edit.login');
+Route::get('/card/{username}/{userId}/edit-login', [CardEditLoginController::class, 'showLoginForm'])->name('card.edit.login.form');
+Route::post('/card/{username}/{userId}/edit-login', [CardEditLoginController::class, 'login'])->name('card.edit.login');
 
 // Download VCard
-Route::get('/card/{slug}/vcard', [VCardController::class, 'download'])->name('card.vcard');
+Route::get('/card/{username}/{userId}/vcard', [VCardController::class, 'download'])->name('card.vcard');
 
 // Exchange Contacts (Add to Contact with visitor info) - REMOVED CSRF middleware to fix "page expired"
 Route::post('/card/{slug}/add-contact', [PublicCardController::class, 'addContact'])

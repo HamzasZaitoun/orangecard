@@ -8,14 +8,22 @@ use Illuminate\Support\Facades\Response;
 
 class VCardController extends Controller
 {
-    public function download($slug)
+    public function download($username, $userId)
     {
-        $card = DigitalCard::where('public_slug', $slug)
-            ->with('user')
-            ->firstOrFail();
+        $user = \App\Models\User::findOrFail($userId);
+
+        // Verify username matches
+        if ($user->username !== $username) {
+            abort(404);
+        }
+
+        $card = $user->digitalCard;
+        if (!$card) {
+            abort(404, 'Card not found');
+        }
 
         // Check if user is active
-        if (!$card->user->is_active) {
+        if (!$user->is_active) {
             abort(404, 'This card is no longer available.');
         }
 

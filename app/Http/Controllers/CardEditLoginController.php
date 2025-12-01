@@ -8,15 +8,36 @@ use App\Models\DigitalCard;
 
 class CardEditLoginController extends Controller
 {
-    public function showLoginForm($slug)
+    public function showLoginForm($username, $userId)
     {
-        $card = DigitalCard::where('public_slug', $slug)->firstOrFail();
+        $user = \App\Models\User::findOrFail($userId);
+
+        // Verify username matches
+        if ($user->username !== $username) {
+            abort(404);
+        }
+
+        $card = $user->digitalCard;
+        if (!$card) {
+            abort(404, 'Card not found');
+        }
+
         return view('auth.card-edit-login', compact('card'));
     }
 
-    public function login(Request $request, $slug)
+    public function login(Request $request, $username, $userId)
     {
-        $card = DigitalCard::where('public_slug', $slug)->firstOrFail();
+        $user = \App\Models\User::findOrFail($userId);
+
+        // Verify username matches
+        if ($user->username !== $username) {
+            abort(404);
+        }
+
+        $card = $user->digitalCard;
+        if (!$card) {
+            abort(404, 'Card not found');
+        }
 
         $request->validate([
             'username' => 'required',
