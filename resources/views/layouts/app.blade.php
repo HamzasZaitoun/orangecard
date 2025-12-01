@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>{{ config('app.name', 'OrangeCard') }}</title>
+    <title>{{ config('app.name', 'Orange E Card') }}</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @livewireStyles
 </head>
@@ -16,7 +16,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16">
                 <div class="flex items-center">
-                    <span class="text-brand-orange text-2xl font-bold">OrangeCard</span>
+                    <span class="text-brand-orange text-2xl font-bold">Orange E Card</span>
                 </div>
 
                 <div class="flex items-center space-x-4">
