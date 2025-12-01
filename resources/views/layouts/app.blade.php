@@ -23,21 +23,25 @@
                     <span class="text-white text-sm">{{ auth()->user()->name }}</span>
 
                     @if(auth()->user()->isSuperAdmin())
-                    <a href="{{ route('superadmin.admins') }}" class="text-brand-orange hover:text-white transition">Manage Admins</a>
+                        <a href="{{ route('superadmin.admins') }}"
+                            class="text-brand-orange hover:text-white transition">Manage Admins</a>
                     @endif
 
                     @if(auth()->user()->isAdmin())
-                    <a href="{{ route('admin.users') }}" class="text-brand-orange hover:text-white transition">Users</a>
-                    <a href="{{ route('admin.users.create') }}" class="text-brand-orange hover:text-white transition">Add User</a>
+                        <a href="{{ route('admin.users') }}" class="text-brand-orange hover:text-white transition">Users</a>
+                        <a href="{{ route('admin.users.create') }}"
+                            class="text-brand-orange hover:text-white transition">Add User</a>
                     @endif
 
                     @if(auth()->user()->isStandard())
-                    <a href="{{ route('dashboard.edit') }}" class="text-brand-orange hover:text-white transition">My Card</a>
+                        <a href="{{ route('dashboard.edit', ['username' => auth()->user()->username]) }}"
+                            class="text-brand-orange hover:text-white transition">My Card</a>
                     @endif
 
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
-                        <button type="submit" class="bg-brand-gray text-white px-4 py-2 rounded hover:bg-brand-orange transition">
+                        <button type="submit"
+                            class="bg-brand-gray text-white px-4 py-2 rounded hover:bg-brand-orange transition">
                             Logout
                         </button>
                     </form>
@@ -50,21 +54,21 @@
     <main class="py-8">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             @if (session('message'))
-            <div class="mb-4 p-4 bg-green-100 border border-green-400 text-green-700 rounded">
-                {{ session('message') }}
-            </div>
+                <div class="mb-4 p-4 bg-green-100 border border-green-400 text-green-700 rounded">
+                    {{ session('message') }}
+                </div>
             @endif
 
             @if (session('error'))
-            <div class="mb-4 p-4 bg-red-100 border border-red-400 text-red-700 rounded">
-                {{ session('error') }}
-            </div>
+                <div class="mb-4 p-4 bg-red-100 border border-red-400 text-red-700 rounded">
+                    {{ session('error') }}
+                </div>
             @endif
 
             @if (session('warning'))
-            <div class="mb-4 p-4 bg-yellow-100 border border-yellow-400 text-yellow-700 rounded">
-                {{ session('warning') }}
-            </div>
+                <div class="mb-4 p-4 bg-yellow-100 border border-yellow-400 text-yellow-700 rounded">
+                    {{ session('warning') }}
+                </div>
             @endif
 
             {{ $slot }}
