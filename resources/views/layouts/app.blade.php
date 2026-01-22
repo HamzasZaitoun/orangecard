@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>{{ config('app.name', 'Orange E Card') }}</title>
+    <title>{{ config('app.name', 'Elite Plus') }}</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @livewireStyles
 </head>
@@ -16,7 +16,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16">
                 <div class="flex items-center">
-                    <span class="text-brand-orange text-2xl font-bold">Orange E Card</span>
+                    <span class="text-brand-elite text-2xl font-bold">Elite Plus</span>
                 </div>
 
                 <div class="flex items-center space-x-4">
@@ -24,24 +24,24 @@
 
                     @if(auth()->user()->isSuperAdmin())
                         <a href="{{ route('superadmin.admins') }}"
-                            class="text-brand-orange hover:text-white transition">Manage Admins</a>
+                            class="text-brand-elite hover:text-white transition">Manage Admins</a>
                     @endif
 
                     @if(auth()->user()->isAdmin())
-                        <a href="{{ route('admin.users') }}" class="text-brand-orange hover:text-white transition">Users</a>
-                        <a href="{{ route('admin.users.create') }}"
-                            class="text-brand-orange hover:text-white transition">Add User</a>
+                        <a href="{{ route('admin.users') }}" class="text-brand-elite hover:text-white transition">Users</a>
+                        <a href="{{ route('admin.users.create') }}" class="text-brand-elite hover:text-white transition">Add
+                            User</a>
                     @endif
 
                     @if(auth()->user()->isStandard())
                         <a href="{{ route('dashboard.edit', ['username' => auth()->user()->username, 'userId' => auth()->id()]) }}"
-                            class="text-brand-orange hover:text-white transition">My Card</a>
+                            class="text-brand-elite hover:text-white transition">My Card</a>
                     @endif
 
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
                         <button type="submit"
-                            class="bg-brand-gray text-white px-4 py-2 rounded hover:bg-brand-orange transition">
+                            class="bg-brand-gray text-white px-4 py-2 rounded hover:bg-brand-elite transition">
                             Logout
                         </button>
                     </form>

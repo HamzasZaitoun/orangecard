@@ -113,10 +113,7 @@
 
             <!-- Header -->
             <div class="header-section">
-                <div class="logo-container">
-                    <img src="{{ asset('Orange-E-Card-PNJ.png') }}" alt="Orange Logo" class="w-24 h-24 object-contain">
-                    <!-- <span class="logo-text">is here</span> -->
-                </div>
+                <!-- Orange Logo Removed -->
                 <img src="{{ asset('elite-plus-logo.png') }}" alt="Elite+" class="elite-logo">
             </div>
 
@@ -136,10 +133,10 @@
                     <label class="form-label">Password</label>
                     <input type="password" name="password" required autofocus class="form-input" placeholder="">
                     @error('password')
-                    <p style="margin-top: 0.5rem; font-size: 0.75rem; color: #ef4444;">{{ $message }}</p>
+                        <p style="margin-top: 0.5rem; font-size: 0.75rem; color: #ef4444;">{{ $message }}</p>
                     @enderror
                     @error('email')
-                    <p style="margin-top: 0.5rem; font-size: 0.75rem; color: #ef4444;">{{ $message }}</p>
+                        <p style="margin-top: 0.5rem; font-size: 0.75rem; color: #ef4444;">{{ $message }}</p>
                     @enderror
                 </div>
 

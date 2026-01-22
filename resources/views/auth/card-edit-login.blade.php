@@ -12,7 +12,7 @@
     <div class="max-w-md w-full space-y-8">
         <div>
             <div class="flex justify-center mb-4">
-                <img src="{{ asset('Orange-E-Card-PNJ.png') }}" alt="Orange Logo" class="w-24 h-24 object-contain">
+                <img src="{{ asset('elite-plus-logo.png') }}" alt="Elite Plus Logo" class="w-24 h-24 object-contain">
             </div>
             <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
                 Login to Edit Your Card
@@ -29,7 +29,7 @@
             <div>
                 <label for="username" class="sr-only">Username</label>
                 <input id="username" name="username" type="text" required
-                    class="relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-brand-orange focus:border-brand-orange"
+                    class="relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-brand-elite focus:border-brand-elite"
                     placeholder="Username" value="{{ old('username', $card->user->username) }}">
                 @error('username')
                     <span class="text-red-500 text-sm">{{ $message }}</span>
@@ -39,7 +39,7 @@
             <div>
                 <label for="password" class="sr-only">Password</label>
                 <input id="password" name="password" type="password" required
-                    class="relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-brand-orange focus:border-brand-orange"
+                    class="relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-brand-elite focus:border-brand-elite"
                     placeholder="Password">
                 @error('password')
                     <span class="text-red-500 text-sm">{{ $message }}</span>
@@ -48,7 +48,7 @@
 
             <div>
                 <button type="submit"
-                    class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-brand-orange hover:bg-opacity-90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-orange transition">
+                    class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-brand-elite hover:bg-opacity-90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-elite transition">
                     Login to Edit
                 </button>
             </div>

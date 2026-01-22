@@ -16,7 +16,7 @@ class SuperAdminSeeder extends Seeder
         User::create([
             'name' => 'Super Admin',
             'username' => 'superadmin',
-            'email' => 'admin@orangecard.com',
+            'email' => 'admin@eliteplusnfc.com',
             'password' => Hash::make('123456'),
             'user_role' => 'super_admin',
             'is_active' => true,
@@ -24,7 +24,7 @@ class SuperAdminSeeder extends Seeder
         User::create([
             'name' => 'Super Admin',
             'username' => 'admin',
-            'email' => 'admin@orangecard.com',
+            'email' => 'admin@eliteplusnfc.com',
             'password' => Hash::make('orange123'),
             'user_role' => 'admin',
             'is_active' => true,
@@ -32,14 +32,14 @@ class SuperAdminSeeder extends Seeder
         User::create([
             'name' => 'Super Admin',
             'username' => 'admin001',
-            'email' => 'admin@orangecard.com',
+            'email' => 'admin@eliteplusnfc.com',
             'password' => Hash::make('orange123'),
             'user_role' => 'admin',
             'is_active' => true,
         ]);
 
         $this->command->info('Super Admin created successfully!');
-        $this->command->info('Email: admin@orangecard.com');
+        $this->command->info('Email: admin@eliteplusnfc.com');
         $this->command->info('Password: 123456');
     }
 }

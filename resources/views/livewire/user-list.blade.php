@@ -3,7 +3,7 @@
     <div class="mb-6 flex justify-between items-center">
         <h2 class="text-2xl font-bold text-brand-black">Standard Users</h2>
         <a href="{{ route('admin.users.create') }}"
-            class="bg-brand-orange text-white px-6 py-2 rounded-lg hover:bg-opacity-90 transition">
+            class="bg-brand-elite text-white px-6 py-2 rounded-lg hover:bg-opacity-90 transition">
             Add New User
         </a>
     </div>
@@ -11,7 +11,7 @@
     <!-- Search -->
     <div class="mb-6">
         <input type="text" wire:model.live="search" placeholder="Search by name, email, or username..."
-            class="w-full px-4 py-2 border border-brand-gray rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-orange">
+            class="w-full px-4 py-2 border border-brand-gray rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-elite">
     </div>
 
     <!-- Users Table -->
@@ -89,7 +89,7 @@
                     <div>
                         <label class="block text-sm font-semibold text-brand-black mb-2">New Password</label>
                         <input type="password" wire:model="newPassword"
-                            class="w-full px-4 py-2 border border-brand-gray rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-orange">
+                            class="w-full px-4 py-2 border border-brand-gray rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-elite">
                         @error('newPassword')
                             <span class="text-red-500 text-sm">{{ $message }}</span>
                         @enderror
@@ -98,7 +98,7 @@
                     <div>
                         <label class="block text-sm font-semibold text-brand-black mb-2">Confirm Password</label>
                         <input type="password" wire:model="confirmPassword"
-                            class="w-full px-4 py-2 border border-brand-gray rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-orange">
+                            class="w-full px-4 py-2 border border-brand-gray rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-elite">
                         @error('confirmPassword')
                             <span class="text-red-500 text-sm">{{ $message }}</span>
                         @enderror

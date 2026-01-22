@@ -25,7 +25,7 @@
             --muted: 0 0% 40%;
             --muted-foreground: 0 0% 70%;
             --border: 0 0% 85%;
-            --logo-orange: 30 100% 50%;
+            --logo-elite: 46 65% 52%;
         }
 
         .card-with-notch {
@@ -53,7 +53,7 @@
         }
 
         .bg-primary {
-            background-color: #ff8000 !important;
+            background-color: #D4AF37 !important;
         }
 
         .text-primary-foreground {
@@ -69,7 +69,7 @@
         }
 
         .hover\:bg-primary\/90:hover {
-            background-color: #e67300 !important;
+            background-color: #B4941F !important;
         }
 
         .hover\:bg-secondary\/50:hover {
@@ -89,7 +89,7 @@
 
         <!-- Header -->
         <div class="flex items-center justify-between mb-12">
-            <img src="{{ asset('orange.png') }}" alt="Orange Logo" class="w-24 h-24 object-contain">
+            <!-- Orange Logo Removed -->
             <img src="{{ asset('elite-plus-logo.png') }}" alt="Elite+" class="w-20 h-auto">
         </div>
 

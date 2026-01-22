@@ -20,9 +20,9 @@
         </div>
 
         @if(session('message'))
-        <div class="rounded-md bg-green-50 p-4">
-            <p class="text-sm font-medium text-green-800">{{ session('message') }}</p>
-        </div>
+            <div class="rounded-md bg-green-50 p-4">
+                <p class="text-sm font-medium text-green-800">{{ session('message') }}</p>
+            </div>
         @endif
 
         <form class="mt-8 space-y-6" method="POST" action="{{ route('card.template.login.post', $user->id) }}">
@@ -31,31 +31,31 @@
             <div>
                 <label for="username" class="sr-only">Username</label>
                 <input id="username" name="username" type="text" required
-                    class="relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-orange-500 focus:border-orange-500"
+                    class="relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-[#D4AF37] focus:border-[#D4AF37]"
                     placeholder="Username" value="{{ old('username', $user->username) }}">
                 @error('username')
-                <span class="text-red-500 text-sm mt-1 block">{{ $message }}</span>
+                    <span class="text-red-500 text-sm mt-1 block">{{ $message }}</span>
                 @enderror
             </div>
 
             <div>
                 <label for="password" class="sr-only">Password</label>
                 <input id="password" name="password" type="password" required
-                    class="relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-orange-500 focus:border-orange-500"
+                    class="relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-[#D4AF37] focus:border-[#D4AF37]"
                     placeholder="Password">
                 @error('password')
-                <span class="text-red-500 text-sm mt-1 block">{{ $message }}</span>
+                    <span class="text-red-500 text-sm mt-1 block">{{ $message }}</span>
                 @enderror
             </div>
 
             <div class="flex flex-col space-y-3">
                 <button type="submit"
-                    class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-orange-500 hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 transition">
+                    class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-[#D4AF37] hover:bg-[#B4941F] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#D4AF37] transition">>
                     Login to Edit
                 </button>
 
                 <a href="{{ route('card.template', ['username' => $user->username, 'userId' => $user->id]) }}"
-                    class="group relative w-full flex justify-center py-2 px-4 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 transition">
+                    class="group relative w-full flex justify-center py-2 px-4 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#D4AF37] transition">>
                     Back to Card
                 </a>
             </div>

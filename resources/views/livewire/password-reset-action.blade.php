@@ -1,7 +1,7 @@
 <div class="min-h-screen bg-brand-black flex items-center justify-center p-4">
     <div class="w-full max-w-md">
         <div class="text-center mb-8">
-            <h1 class="text-4xl font-bold text-brand-orange mb-2">Orange E Card</h1>
+            <h1 class="text-4xl font-bold text-brand-elite mb-2">Elite Plus</h1>
             <p class="text-white">Password Reset Required</p>
         </div>
 
@@ -20,7 +20,7 @@
                         Current Password *
                     </label>
                     <input type="password" wire:model="current_password"
-                        class="w-full px-4 py-2 border border-brand-gray rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-orange">
+                        class="w-full px-4 py-2 border border-brand-gray rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-elite">
                     @error('current_password')
                         <span class="text-red-500 text-sm">{{ $message }}</span>
                     @enderror
@@ -32,7 +32,7 @@
                         New Password *
                     </label>
                     <input type="password" wire:model="password"
-                        class="w-full px-4 py-2 border border-brand-gray rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-orange">
+                        class="w-full px-4 py-2 border border-brand-gray rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-elite">
                     @error('password')
                         <span class="text-red-500 text-sm">{{ $message }}</span>
                     @enderror
@@ -47,12 +47,12 @@
                         Confirm New Password *
                     </label>
                     <input type="password" wire:model="password_confirmation"
-                        class="w-full px-4 py-2 border border-brand-gray rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-orange">
+                        class="w-full px-4 py-2 border border-brand-gray rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-elite">
                 </div>
 
                 <!-- Submit Button -->
                 <button type="submit"
-                    class="w-full bg-brand-orange text-white font-bold py-3 rounded-lg hover:bg-opacity-90 transition">
+                    class="w-full bg-brand-elite text-white font-bold py-3 rounded-lg hover:bg-opacity-90 transition">
                     Reset Password
                 </button>
             </form>
@@ -61,7 +61,7 @@
             <div class="mt-6 text-center">
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
-                    <button type="submit" class="text-brand-gray hover:text-brand-orange text-sm transition">
+                    <button type="submit" class="text-brand-gray hover:text-brand-elite text-sm transition">
                         Logout Instead
                     </button>
                 </form>

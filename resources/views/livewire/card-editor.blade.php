@@ -2,9 +2,9 @@
     <div class="max-w-4xl mx-auto py-8">
         @if(!$current_image && !$first_name)
             <div
-                class="mb-8 bg-gradient-to-r from-brand-orange via-red-500 to-yellow-500 rounded-2xl p-8 text-white shadow-2xl relative overflow-hidden">
+                class="mb-8 bg-gradient-to-r from-brand-elite via-yellow-500 to-yellow-400 rounded-2xl p-8 text-white shadow-2xl relative overflow-hidden">
                 <div class="relative z-10">
-                    <h2 class="text-3xl font-bold mb-2">Welcome to Orange E Card! 🎉</h2>
+                    <h2 class="text-3xl font-bold mb-2">Welcome to Elite Plus! 🎉</h2>
                     <p class="text-white/90 text-lg">Let's create your digital business card. Fill in your information
                         below.</p>
                 </div>
@@ -22,7 +22,7 @@
             <div class="mb-6 flex justify-center">
                 <a href="{{ route('card.public', ['username' => auth()->user()->username, 'userId' => auth()->id()]) }}"
                     target="_blank"
-                    class="inline-flex items-center space-x-2 bg-gradient-to-r from-brand-orange to-red-500 text-white px-6 py-3 rounded-xl font-semibold hover:shadow-xl hover:scale-105 transition-all duration-200">
+                    class="inline-flex items-center space-x-2 bg-gradient-to-r from-brand-elite to-yellow-500 text-white px-6 py-3 rounded-xl font-semibold hover:shadow-xl hover:scale-105 transition-all duration-200">
                     <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                         <path
                             d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z" />
@@ -51,10 +51,10 @@
                                 <div class="relative group flex justify-center">
                                     <img id="formProfileImage" src="{{ $current_image ? asset($current_image) : '#' }}"
                                         alt="Current Profile"
-                                        class="w-32 h-32 rounded-full object-cover border-4 border-brand-orange shadow-lg group-hover:scale-105 transition-transform {{ $current_image ? '' : 'hidden' }}">
+                                        class="w-32 h-32 rounded-full object-cover border-4 border-brand-elite shadow-lg group-hover:scale-105 transition-transform {{ $current_image ? '' : 'hidden' }}">
 
                                     <div id="formProfileInitials"
-                                        class="w-32 h-32 rounded-full bg-gradient-to-br from-brand-orange to-red-500 flex items-center justify-center text-white text-4xl font-bold shadow-lg {{ $current_image ? 'hidden' : '' }}">
+                                        class="w-32 h-32 rounded-full bg-gradient-to-br from-brand-elite to-yellow-500 flex items-center justify-center text-white text-4xl font-bold shadow-lg {{ $current_image ? 'hidden' : '' }}">
                                         {{ substr($first_name ?: 'U', 0, 1) }}
                                     </div>
 
@@ -66,7 +66,7 @@
 
                                 <label class="cursor-pointer">
                                     <div
-                                        class="bg-brand-orange text-white px-6 py-3 rounded-full hover:shadow-lg hover:scale-105 transition-all duration-200 flex items-center space-x-2">
+                                        class="bg-brand-elite text-white px-6 py-3 rounded-full hover:shadow-lg hover:scale-105 transition-all duration-200 flex items-center space-x-2">
                                         <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                                             <path fill-rule="evenodd"
                                                 d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z"
@@ -93,7 +93,7 @@
                                 </label>
                                 <input type="text" name="first_name" value="{{ old('first_name', $first_name) }}"
                                     placeholder="John" required
-                                    class="w-full px-4 py-3 border-2 border-brand-light rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-orange focus:border-transparent transition bg-gray-50 focus:bg-white">
+                                    class="w-full px-4 py-3 border-2 border-brand-light rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-elite focus:border-transparent transition bg-gray-50 focus:bg-white">
                                 @error('first_name')
                                     <span class="text-red-500 text-sm mt-1 block">{{ $message }}</span>
                                 @enderror
@@ -106,7 +106,7 @@
                                 </label>
                                 <input type="text" name="last_name" value="{{ old('last_name', $last_name) }}"
                                     placeholder="Doe" required
-                                    class="w-full px-4 py-3 border-2 border-brand-light rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-orange focus:border-transparent transition bg-gray-50 focus:bg-white">
+                                    class="w-full px-4 py-3 border-2 border-brand-light rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-elite focus:border-transparent transition bg-gray-50 focus:bg-white">
                                 @error('last_name')
                                     <span class="text-red-500 text-sm mt-1 block">{{ $message }}</span>
                                 @enderror
@@ -121,7 +121,7 @@
                             </label>
                             <input type="text" name="job_title" value="{{ old('job_title', $job_title) }}"
                                 placeholder="Chief Executive Officer"
-                                class="w-full px-4 py-3 border-2 border-brand-light rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-orange focus:border-transparent transition bg-gray-50 focus:bg-white">
+                                class="w-full px-4 py-3 border-2 border-brand-light rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-elite focus:border-transparent transition bg-gray-50 focus:bg-white">
                             @error('job_title')
                                 <span class="text-red-500 text-sm mt-1 block">{{ $message }}</span>
                             @enderror
@@ -141,7 +141,7 @@
                                 </label>
                                 <input type="email" name="email" value="{{ old('email', $email) }}"
                                     placeholder="john@company.com" required
-                                    class="w-full px-4 py-3 border-2 border-brand-light rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-orange focus:border-transparent transition bg-gray-50 focus:bg-white">
+                                    class="w-full px-4 py-3 border-2 border-brand-light rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-elite focus:border-transparent transition bg-gray-50 focus:bg-white">
                                 @error('email')
                                     <span class="text-red-500 text-sm mt-1 block">{{ $message }}</span>
                                 @enderror
@@ -158,7 +158,7 @@
                                 </label>
                                 <input type="tel" name="mobile_number"
                                     value="{{ old('mobile_number', $mobile_number) }}" placeholder="07xxxxxxxx"
-                                    class="w-full px-4 py-3 border-2 border-brand-light rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-orange focus:border-transparent transition bg-gray-50 focus:bg-white">
+                                    class="w-full px-4 py-3 border-2 border-brand-light rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-elite focus:border-transparent transition bg-gray-50 focus:bg-white">
                                 @error('mobile_number')
                                     <span class="text-red-500 text-sm mt-1 block">{{ $message }}</span>
                                 @enderror
@@ -167,7 +167,7 @@
 
                         <!-- Submit Button -->
                         <button type="submit"
-                            class="w-full bg-gradient-to-r from-brand-orange to-red-500 text-white font-bold py-4 rounded-xl hover:shadow-2xl hover:scale-105 transition-all duration-200 flex items-center justify-center space-x-2">
+                            class="w-full bg-gradient-to-r from-brand-elite to-yellow-500 text-white font-bold py-4 rounded-xl hover:shadow-2xl hover:scale-105 transition-all duration-200 flex items-center justify-center space-x-2">
                             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd"
                                     d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
@@ -197,13 +197,13 @@
                         <div class="bg-white rounded-xl p-6 text-center">
                             <div class="flex justify-center mb-4">
                                 <div
-                                    class="w-24 h-24 rounded-full bg-brand-orange border-4 border-brand-orange overflow-hidden flex items-center justify-center">
+                                    class="w-24 h-24 rounded-full bg-brand-elite border-4 border-brand-elite overflow-hidden flex items-center justify-center">
                                     <img id="previewImg" src="{{ $current_image ? asset($current_image) : '#' }}"
                                         alt="Preview"
                                         class="w-full h-full object-cover {{ $current_image ? '' : 'hidden' }}">
 
                                     <div id="previewInitials"
-                                        class="w-full h-full bg-gradient-to-br from-brand-orange to-red-500 flex items-center justify-center text-white text-3xl font-bold {{ $current_image ? 'hidden' : '' }}">
+                                        class="w-full h-full bg-gradient-to-br from-brand-elite to-yellow-500 flex items-center justify-center text-white text-3xl font-bold {{ $current_image ? 'hidden' : '' }}">
                                         {{ substr($first_name ?: 'U', 0, 1) }}
                                     </div>
                                 </div>
