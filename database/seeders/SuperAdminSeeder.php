@@ -17,7 +17,7 @@ class SuperAdminSeeder extends Seeder
             'name' => 'Super Admin',
             'username' => 'superadmin',
             'email' => 'admin@eliteplusnfc.com',
-            'password' => Hash::make('Elite@2026!Secure'),
+            'password' => Hash::make('123456'),
             'user_role' => 'super_admin',
             'is_active' => true,
         ]);
@@ -25,7 +25,7 @@ class SuperAdminSeeder extends Seeder
             'name' => 'Super Admin',
             'username' => 'admin',
             'email' => 'admin@eliteplusnfc.com',
-            'password' => Hash::make('elite123'),
+            'password' => Hash::make('eliteadmin123$$'),
             'user_role' => 'admin',
             'is_active' => true,
         ]);
