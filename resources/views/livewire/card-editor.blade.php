@@ -93,7 +93,7 @@
                                 </label>
                                 <input type="text" name="first_name" value="{{ old('first_name', $first_name) }}"
                                     placeholder="John" required
-                                    class="w-full px-4 py-3 border-2 border-brand-light rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-elite focus:border-transparent transition bg-gray-50 focus:bg-white">
+                                    class="w-full px-4 py-3 border-2 border-brand-light rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-elite focus:border-transparent transition bg-gray-50 focus:bg-white text-lg font-semibold placeholder:text-gray-400 placeholder:font-bold">
                                 @error('first_name')
                                     <span class="text-red-500 text-sm mt-1 block">{{ $message }}</span>
                                 @enderror
@@ -106,7 +106,7 @@
                                 </label>
                                 <input type="text" name="last_name" value="{{ old('last_name', $last_name) }}"
                                     placeholder="Doe" required
-                                    class="w-full px-4 py-3 border-2 border-brand-light rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-elite focus:border-transparent transition bg-gray-50 focus:bg-white">
+                                    class="w-full px-4 py-3 border-2 border-brand-light rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-elite focus:border-transparent transition bg-gray-50 focus:bg-white text-lg font-semibold placeholder:text-gray-400 placeholder:font-bold">
                                 @error('last_name')
                                     <span class="text-red-500 text-sm mt-1 block">{{ $message }}</span>
                                 @enderror
@@ -121,7 +121,7 @@
                             </label>
                             <input type="text" name="job_title" value="{{ old('job_title', $job_title) }}"
                                 placeholder="Chief Executive Officer"
-                                class="w-full px-4 py-3 border-2 border-brand-light rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-elite focus:border-transparent transition bg-gray-50 focus:bg-white">
+                                class="w-full px-4 py-3 border-2 border-brand-light rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-elite focus:border-transparent transition bg-gray-50 focus:bg-white text-lg font-semibold placeholder:text-gray-400 placeholder:font-bold">
                             @error('job_title')
                                 <span class="text-red-500 text-sm mt-1 block">{{ $message }}</span>
                             @enderror
@@ -141,7 +141,7 @@
                                 </label>
                                 <input type="email" name="email" value="{{ old('email', $email) }}"
                                     placeholder="john@company.com" required
-                                    class="w-full px-4 py-3 border-2 border-brand-light rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-elite focus:border-transparent transition bg-gray-50 focus:bg-white">
+                                    class="w-full px-4 py-3 border-2 border-brand-light rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-elite focus:border-transparent transition bg-gray-50 focus:bg-white text-lg font-semibold placeholder:text-gray-400 placeholder:font-bold">
                                 @error('email')
                                     <span class="text-red-500 text-sm mt-1 block">{{ $message }}</span>
                                 @enderror
@@ -158,7 +158,7 @@
                                 </label>
                                 <input type="tel" name="mobile_number"
                                     value="{{ old('mobile_number', $mobile_number) }}" placeholder="07xxxxxxxx"
-                                    class="w-full px-4 py-3 border-2 border-brand-light rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-elite focus:border-transparent transition bg-gray-50 focus:bg-white">
+                                    class="w-full px-4 py-3 border-2 border-brand-light rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-elite focus:border-transparent transition bg-gray-50 focus:bg-white text-lg font-semibold placeholder:text-gray-400 placeholder:font-bold">
                                 @error('mobile_number')
                                     <span class="text-red-500 text-sm mt-1 block">{{ $message }}</span>
                                 @enderror
