@@ -102,7 +102,7 @@
             <!-- Contact Info -->
             <div class="text-center space-y-4">
                 <h1 class="text-4xl font-extrabold text-card-foreground tracking-tight">{{ $card->full_name }}</h1>
-                <p class="text-muted-foreground text-xl font-bold">{{ $card->job_title }}</p>
+                <p class="text-gray-800 text-2xl font-bold mt-2">{{ $card->job_title }}</p>
 
                 <div class="space-y-3 pt-2">
                     <div class="border-t border-border pt-3">
@@ -118,18 +118,18 @@
         <!-- Add Contact -->
         <div class="mt-8 flex items-center gap-4">
             @if($card->mobile_number || $card->email)
-            <a href="{{ route('card.vcard', ['username' => $card->user->username, 'userId' => $card->user_id]) }}"
-                class="flex-1">
-                <button
-                    class="w-full bg-cyan-500 hover:bg-cyan-600 text-white rounded-xl h-14 text-lg font-bold shadow-lg transition-all transform hover:scale-105">
+                <a href="{{ route('card.vcard', ['username' => $card->user->username, 'userId' => $card->user_id]) }}"
+                    class="flex-1">
+                    <button
+                        class="w-full bg-cyan-500 hover:bg-cyan-600 text-white rounded-xl h-14 text-lg font-bold shadow-lg transition-all transform hover:scale-105">
+                        Add Contact
+                    </button>
+                </a>
+            @else
+                <button disabled
+                    class="w-full bg-gray-400 text-white rounded-xl h-14 text-lg font-bold cursor-not-allowed opacity-70">
                     Add Contact
                 </button>
-            </a>
-            @else
-            <button disabled
-                class="w-full bg-gray-400 text-white rounded-xl h-14 text-lg font-bold cursor-not-allowed opacity-70">
-                Add Contact
-            </button>
             @endif
         </div>
 
