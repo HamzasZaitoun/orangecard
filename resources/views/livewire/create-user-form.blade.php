@@ -47,7 +47,7 @@
                 </div>
 
                 <div class="bg-blue-50 border-l-4 border-blue-400 p-4 rounded-r-lg text-sm text-blue-700">
-                    Default password: <strong>orange123</strong>. All credentials are generated automatically.
+                    Default password: <strong>elite123</strong>. All credentials are generated automatically.
                 </div>
             </div>
 

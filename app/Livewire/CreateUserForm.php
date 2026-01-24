@@ -18,7 +18,7 @@ class CreateUserForm extends Component
 
     public function submit()
     {
-        $defaultPassword = 'orange123';
+        $defaultPassword = 'elite123';
         $defaultEmail = $this->nextUsername . '@example.com';
 
         $user = User::create([
