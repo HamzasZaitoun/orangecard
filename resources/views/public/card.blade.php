@@ -25,7 +25,7 @@
             --muted: 0 0% 40%;
             --muted-foreground: 0 0% 70%;
             --border: 0 0% 85%;
-            --logo-elite: 25 100% 50%;
+            --logo-elite: 0 0% 29%;
         }
 
         .card-with-notch {
@@ -53,7 +53,7 @@
         }
 
         .bg-primary {
-            background-color: #ff6b00 !important;
+            background-color: #4a4a4a !important;
         }
 
         .text-primary-foreground {
@@ -69,7 +69,7 @@
         }
 
         .hover\:bg-primary\/90:hover {
-            background-color: #e65c00 !important;
+            background-color: #333333 !important;
         }
 
         .hover\:bg-secondary\/50:hover {

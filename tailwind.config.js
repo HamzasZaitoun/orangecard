@@ -9,7 +9,7 @@ export default {
   theme: {
     extend: {
       colors: {
-        'brand-elite': '#ff6b00',
+        'brand-elite': '#4a4a4a',
         'brand-black': '#000000',
         'brand-light': '#E8E8E8',
         'brand-gray': '#555555',
