@@ -2,19 +2,19 @@
     <div class="max-w-4xl mx-auto py-8">
         @if(!$current_image && !$first_name)
             <div
-                class="mb-8 bg-gradient-to-r from-brand-elite via-yellow-500 to-yellow-400 rounded-2xl p-8 text-white shadow-2xl relative overflow-hidden">
+                class="mb-8 bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 rounded-2xl p-8 text-white shadow-2xl relative overflow-hidden">
                 <div class="relative z-10">
                     <h2 class="text-3xl font-bold mb-2">Welcome to Elite Plus! 🎉</h2>
-                    <p class="text-white/90 text-lg">Let's create your digital business card. Fill in your information
+                    <p class="text-slate-300 text-lg">Let's create your digital business card. Fill in your information
                         below.</p>
                 </div>
-                <div class="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -mr-32 -mt-32"></div>
-                <div class="absolute bottom-0 left-0 w-48 h-48 bg-white/10 rounded-full -ml-24 -mb-24"></div>
+                <div class="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -mr-32 -mt-32"></div>
+                <div class="absolute bottom-0 left-0 w-48 h-48 bg-white/5 rounded-full -ml-24 -mb-24"></div>
             </div>
         @else
             <div class="mb-8 text-center">
-                <h2 class="text-3xl font-bold text-brand-black mb-2">Edit Your Digital Card</h2>
-                <p class="text-brand-gray">Update your information anytime</p>
+                <h2 class="text-3xl font-bold text-slate-800 mb-2">Edit Your Digital Card</h2>
+                <p class="text-slate-500">Update your information anytime</p>
             </div>
         @endif
 
@@ -22,7 +22,7 @@
             <div class="mb-6 flex justify-center">
                 <a href="{{ route('card.public', ['username' => auth()->user()->username, 'userId' => auth()->id()]) }}"
                     target="_blank"
-                    class="inline-flex items-center space-x-2 bg-gradient-to-r from-brand-elite to-yellow-500 text-white px-6 py-3 rounded-xl font-semibold hover:shadow-xl hover:scale-105 transition-all duration-200">
+                    class="inline-flex items-center space-x-2 bg-teal-600 text-white px-6 py-3 rounded-xl font-semibold hover:bg-teal-700 hover:shadow-xl hover:scale-105 transition-all duration-200">
                     <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                         <path
                             d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z" />
@@ -166,8 +166,9 @@
                         </div>
 
                         <!-- Submit Button -->
+                        <!-- Submit Button -->
                         <button type="submit"
-                            class="w-full bg-gradient-to-r from-brand-elite to-yellow-500 text-white font-bold py-4 rounded-xl hover:shadow-2xl hover:scale-105 transition-all duration-200 flex items-center justify-center space-x-2">
+                            class="w-full bg-blue-600 text-white font-bold py-4 rounded-xl hover:bg-blue-700 hover:shadow-lg hover:scale-105 transition-all duration-200 flex items-center justify-center space-x-2">
                             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd"
                                     d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
