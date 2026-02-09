@@ -129,7 +129,7 @@
                 <a href="{{ route('card.vcard', ['username' => $card->user->username, 'userId' => $card->user_id]) }}"
                     class="flex-1">
                     <button
-                        class="w-full bg-cyan-500 hover:bg-cyan-600 text-white rounded-xl h-14 text-lg font-bold shadow-lg transition-all transform hover:scale-105">
+                        class="w-full bg-blue-600 hover:bg-blue-700 text-white rounded-xl h-14 text-lg font-bold shadow-lg transition-all transform hover:scale-105">
                         Add Contact
                     </button>
                 </a>

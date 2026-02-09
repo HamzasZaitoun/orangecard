@@ -116,8 +116,9 @@
 
             <!-- Contact Info -->
             <div class="text-center space-y-4">
-                <h1 class="text-2xl font-bold text-card-foreground">Full Name</h1>
-                <p class="text-muted-foreground text-sm">Job Title</p>
+                <h1 class="text-4xl font-extrabold text-card-foreground tracking-tight">{{ $user->name ?? 'Full Name' }}
+                </h1>
+                <p class="text-gray-800 text-2xl font-bold mt-2">{{ $user->job_title ?? 'Job Title' }}</p>
 
                 <div class="space-y-3 pt-2">
                     <div class="border-t border-border pt-3">
@@ -133,7 +134,7 @@
         <!-- Add Contact (Disabled) -->
         <div class="mt-8 flex items-center gap-4">
             <button disabled
-                class="w-full bg-gray-400 text-white rounded-xl h-14 text-base font-semibold shadow-lg cursor-not-allowed opacity-70">
+                class="w-full bg-gray-400 text-white rounded-xl h-14 text-lg font-bold shadow-lg cursor-not-allowed opacity-70">
                 Add Contact
             </button>
         </div>
