@@ -91,13 +91,13 @@
     <div class="w-full max-w-sm">
 
         <!-- Header -->
-        <div class="flex items-center justify-center mb-8">
+        <div class="flex items-center justify-center mb-12">
             <!-- Orange Logo Removed -->
             <img src="{{ asset('elite-plus-logo.png') }}" alt="Elite+" class="w-32 h-auto">
         </div>
 
         <!-- Contact Card -->
-        <div class="card-with-notch rounded-3xl p-8 shadow-2xl relative" style="margin-top: 5rem;">
+        <div class="card-with-notch rounded-3xl p-8 shadow-2xl relative" style="margin-top: 8rem;">
 
             <!-- Profile Image -->
             <div class="flex justify-center -mt-20 mb-12" style="margin-top:-7rem">
