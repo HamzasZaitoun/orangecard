@@ -91,7 +91,7 @@
     <div class="w-full max-w-sm">
 
         <!-- Header -->
-        <div class="flex items-center justify-between mb-8">
+        <div class="flex items-center justify-center mb-8">
             <!-- Orange Logo Removed -->
             <img src="{{ asset('elite-plus-logo.png') }}" alt="Elite+" class="w-32 h-auto">
         </div>
