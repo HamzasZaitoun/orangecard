@@ -29,7 +29,7 @@
 
         .header-section {
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
             margin-bottom: 4rem;
         }

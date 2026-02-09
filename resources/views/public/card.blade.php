@@ -35,6 +35,14 @@
             background-repeat: no-repeat;
         }
 
+        body {
+            background-image: url('{{ asset("background-new.jpg") }}');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
         /* Fallback */
         .bg-background {
             background-color: #000 !important;
@@ -106,10 +114,10 @@
 
                 <div class="space-y-3 pt-2">
                     <div class="border-t border-border pt-3">
-                        <p class="text-card-foreground font-medium">{{ $card->mobile_number }}</p>
+                        <p class="text-card-foreground font-bold text-lg">{{ $card->mobile_number }}</p>
                     </div>
                     <div class="border-t border-border pt-3">
-                        <p class="text-card-foreground font-medium">{{ $card->email }}</p>
+                        <p class="text-card-foreground font-bold text-lg">{{ $card->email }}</p>
                     </div>
                 </div>
             </div>

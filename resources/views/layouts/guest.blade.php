@@ -12,9 +12,9 @@
 
 <body class="bg-brand-light">
     <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0">
-        <div class="mb-6">
+        <div class="mb-6 flex justify-center w-full">
             <a href="/">
-                <span class="text-brand-elite text-4xl font-bold">Elite Plus</span>
+                <img src="{{ asset('elite-plus-logo.png') }}" alt="Elite Plus" class="h-20 w-auto">
             </a>
         </div>
 

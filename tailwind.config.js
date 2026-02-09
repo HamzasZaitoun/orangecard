@@ -8,6 +8,9 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['HelveticaNeueLT', 'sans-serif'],
+      },
       colors: {
         'brand-elite': '#4a4a4a',
         'brand-black': '#000000',
